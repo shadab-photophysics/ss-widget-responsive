@@ -1,0 +1,335 @@
+/* Style the button that is used to open and close the collapsible content */
+.collapsible {
+  background-color: #851764;
+  color: #ffffff;
+  cursor: pointer;
+  padding: 18px;
+  width: 100%;
+  border: none;
+  text-align: left;
+  outline: none;
+  font-size: 15px;
+}
+
+/* Add a background color to the button if it is clicked on (add the .active class with JS), and when you move the mouse over it (hover) */
+.active, .collapsible:hover {
+  background-color: #b01f85;
+}
+
+/* Style the collapsible content. Note: hidden by default */
+.content {
+  padding: 0 18px;
+  display: none;
+  overflow: hidden;
+  background-color: #e6e6e6;
+}
+
+#ramachandran_div {
+    position:relative;
+	width: 50vmin;
+	height: 50vmin;
+}
+
+#canvas, #bgcanvas, #labelscanvas {
+	position:absolute; top:0px; left:0px;
+	width: 100%;
+	height: 100%;
+	background: rgba(255, 255, 255, 0);
+}
+
+.sscontent {
+	padding:10px;
+}
+
+#playground {
+	width: 100%;
+	overflow: hidden;
+}
+
+.button {
+	display: inline-block;
+	margin: 4px 2px;
+	font-family: Arial;
+	font-size: 12px;
+	text-align: center;
+	text-decoration: none;
+	background-color: #9e247b;
+	color: white;
+	border: black;
+	border-radius: 5px;
+	border-style: solid;
+	border-width: 1px;
+	border-color:#333;
+	cursor: pointer;
+	width: 37px;
+	height: 28px;
+}
+
+.button:hover
+{
+	color: white;
+	background-color: #d64dae;
+}
+
+.button:active
+{
+	color: white;
+	background-color: #4f123d;
+}
+
+.playgroundContent {
+	float:left;
+}
+
+.jmolContainer {
+	width:80vmin;
+	height:80vmin;
+}
+
+.structureBox {
+	overflow:auto;
+	border-style:solid;
+	border-color:white;
+	border-radius:15px;
+	color:white;
+	padding-top:10px;
+	padding-bottom:10px;
+	padding-right:10px;
+	padding-left:10px;
+	margin-top:10px;
+	margin-bottom:10px;
+	margin-right:10px;
+	margin-left:10px;
+}
+
+.bulletList {
+	pointer-events:none;
+	margin-left:-15px;
+	margin-bottom:0;
+}
+
+.explainingtext {
+	text-align: justify;
+}
+
+.hoverable:first-letter {
+	font-size: 20px;
+	color: #9e247b;
+}
+
+.hoverable:hover {
+	border-radius:15px;
+	background:#faeaf6;
+	border-style:solid;
+	border-color:#faeaf6;
+	padding-top:10px;
+	padding-bottom:10px;
+	padding-right:10px;
+	padding-left:10px;
+}
+
+#mainBox {
+	display:flex;
+}
+
+#secondarystructures {
+	width:fit-content;
+	min-width:fit-content;
+	background:#e6e6e6;
+	display:grid;
+	grid-template-areas:
+	'sselementstitle sselementstitle'
+	'helices strands'
+	'turns turns'
+	'coil coil';
+}
+
+#secondarystructures:hover {
+	background:#f8f8f8;
+}
+
+#sselements_title {
+	grid-area: sselementstitle;
+	color: black;
+}
+
+#helices {
+	grid-area: helices;
+	background:#9e247b;
+	display: grid;
+	grid-auto-rows: min-content;
+	grid-template-rows: auto auto auto auto;
+}
+
+#helices_title {
+	grid-row: 1;
+}
+
+#alphahelices {
+	background:#9e247b;
+	border-style:dashed;
+	grid-auto-rows: min-content;
+	grid-auto-columns: min-content;
+	grid-row: 3;
+	display: grid;
+	grid-template-areas:
+	'alphahelicestitle alphahelicestitle'
+	'regular distorted';
+}
+
+#alphahelices_title {
+	grid-area: alphahelicestitle;
+}
+
+#regular {
+	background:#9e247b;
+	grid-area: regular;
+}
+
+#secondarystructures:hover:not(:has(*:hover)) {
+	cursor: pointer;
+}
+
+#helices:hover:not(:has(*:hover)),#strands:hover:not(:has(*:hover)),#turns:hover:not(:has(*:hover)),#regular:hover,#distorted:hover,#threeten:hover,#pihelix:hover,#parallel:hover,#lefttwist:hover,#relaxed:hover,#righttwist:hover,#coil:hover {
+	background-color: #b01f85;
+	cursor: pointer;
+}
+
+#bulge:hover,#piturns:hover,#alphaturns:hover,#betaturns:hover,#gammaturns:hover,#epsilonturns:hover,#deltaturns:hover {
+	background-color: #0058a7;
+	cursor: pointer;
+}
+
+#distorted {
+	background:#9e247b;
+	grid-area: distorted;
+}
+
+#threeten {
+	background:#9e247b;
+	grid-row: 4;
+}
+
+#pihelix {
+	background:#9e247b;
+	grid-row: 2;
+}
+
+#strands {
+	grid-area: strands;
+	background:#9e247b;
+	min-width:375px;
+}
+
+#parallel,#lefttwist,#relaxed,#righttwist,#antiparallel {
+	background:#9e247b;
+}
+
+#bulge {
+	grid-auto-rows: min-content;
+	grid-auto-columns: min-content;
+	display: grid;
+	grid-template-areas:
+	'parallel parallel'
+	'bulgetitle bulgetitle'
+	'classic g1'
+	'gx wide';
+	margin-right:20px;
+}
+
+#bulge_title {
+	grid-area: bulgetitle;
+}
+
+#bulge_parallel {
+	grid-area: parallel;
+	border-style:dashed;
+}
+
+#bulge_classic {
+	grid-area: classic;
+	border-style:dashed;
+}
+
+#bulge_g1 {
+	grid-area: g1;
+	border-style:dashed;
+}
+
+#bulge_gx {
+	grid-area: gx;
+	border-style:dashed;
+}
+
+#bulge_wide {
+	grid-area: wide;
+	border-style:dashed;
+}
+
+#turns {
+	grid-area: turns;
+	background:#9e247b;
+	grid-auto-rows: min-content;
+	display: grid;
+	grid-template-areas:
+	'turnstitle turnstitle turnstitle turnstitle turnstitle'
+	'piturns alphaturns betaturns gammaturns deltaturns'
+	'piturns alphaturns betaturns epsilonturns deltaturns';
+}
+
+#turns_title {
+	grid-area: turnstitle;
+}
+
+#piturns {
+	grid-area: piturns;
+	background:#004F95;
+}
+
+#alphaturns {
+	grid-area: alphaturns;
+	background:#004F95;
+}
+
+#betaturns {
+	grid-area: betaturns;
+	background:#004F95;
+}
+
+#gammaturns {
+	grid-area: gammaturns;
+	background:#004F95;
+}
+
+#epsilonturns {
+	grid-area: epsilonturns;
+	background:#004F95;
+}
+
+#deltaturns {
+	grid-area: deltaturns;
+	background:#004F95;
+}
+
+.structureBoxTitle {
+	text-align:center;
+}
+
+.singleItem {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	text-align:center;
+}
+
+#coil {
+	grid-area: coil;
+	flex: 1;
+	background:#9e247b;
+	border-style:solid;
+}
+
+#bulge {
+	position:absolute;
+	background:#004F95;
+}

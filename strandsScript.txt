@@ -1,0 +1,15 @@
+select {21-28 or 76-82 or 86-92};
+color cartoon [171, 181, 146];
+select {3-8 or 53-59};
+color cartoon [158,36,123];
+delete $ parallel;
+font ECHO 30; set echo ID antiparallel center; set echo ID antiparallel 50% 10%; background ECHO white; color ECHO [171, 181, 146];echo Anti-Parallel;
+delay 1;
+select {3-8 or 21-28 or 53-59};
+color cartoon [171, 181, 146];
+select {76-82 or 86-92};
+color cartoon [158,36,123];
+delete $ antiparallel;
+font ECHO 30; set echo ID parallel center; set echo ID parallel 50% 90%; background ECHO white; color ECHO [171, 181, 146];echo Parallel;
+delay 1;
+loop 0;

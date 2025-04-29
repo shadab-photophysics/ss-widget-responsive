@@ -1,0 +1,1701 @@
+<!DOCTYPE HTML>
+<html lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>Secondary Structure</title>
+
+<link rel="stylesheet" href="style.css">
+
+<link rel="shortcut icon" href="#">
+
+<script src="jsmol/jsmol/JSmol.min.js" type="text/javascript"></script>
+
+<script type="text/javascript">
+function getValueByKey(object, row) {http://www.beta-sheet.org/page29/page51/page53/index.html
+  return object[row];
+}
+const moleculeProps = {
+    "idealalpha": {
+    "type": "helices",
+    "chains": [["A", "A"]],
+    "residues": [[2, 22]]
+  },
+    "2TRX": {
+    "type": "strands",
+    "chains": [["A", "A"], ["A", "A"], ["A", "A"], ["A", "A"], ["A", "A"]],
+    "residues": [[3, 8], [21, 28], [53, 59], [76, 82], [86, 92]]
+  },
+    "1ARB": {
+    "type": "turns",
+    "chains": [["A", "A"]],
+    "residues": [[109, 114]]
+  },
+  "6EC0": {
+    "type": "regular",
+    "chains": [["A", "A"]],
+    "residues": [[225, 331]]
+  },
+  "1U4G": {
+    "type": "distorted",
+    "chains": [["A", "A"]],
+    "residues": [[134, 149]],
+    "caption": "Natural α-helix with small irregularities"
+  },
+  "1V54": {
+    "type": "distorted",
+    "chains": [["E", "E"]],
+    "residues": [[80, 97]],
+    "caption": "A kink in an α-helix"
+  },
+  "1QOY": {
+    "type": "distorted",
+    "chains": [["A", "A"]],
+    "residues": [[18, 36]],
+    "caption": "Distortions of an α-helix leading to a looser C-terminus"
+  },
+  "2CPP": {
+    "type": "distorted",
+    "chains": [["A", "A"]],
+    "residues": [[258, 276]],
+    "caption": "A strong kink due to a Pro residue in a slightly distorted α-helix"
+  },
+  "1TVF": {
+    "type": "distorted",
+    "chains": [["A", "A"]],
+    "residues": [[73, 91]],
+    "caption": "Difference between body and N-terminus of an α-helix"
+  },
+  "5MBN": {
+    "type": "distorted",
+    "chains": [["A", "A"]],
+    "residues": [[3, 19]],
+    "caption": "An α<sub>π</sub> cap at the C-terminus of an α-helix leading to higher curvature"
+  },
+  "1QTE": {
+    "type": "distorted",
+    "chains": [["A", "A"]],
+    "residues": [[21, 36]],
+    "caption": "Transition from a helix to a turn region with gradually increasing curvatures and interspersed high torsions"
+  },
+  "1RWZ": {
+    "type": "distorted",
+    "chains": [["A", "A"]],
+    "residues": [[8, 23]],
+    "caption": "C-terminal caps of α-helix"
+  },
+  "1KSS": {
+    "type": "distorted",
+    "chains": [["A", "A"]],
+    "residues": [[543, 556]],
+    "caption": "N-terminal caps of α-helix"
+  },
+  "1GPB": {
+    "type": "310",
+    "chains": [["A", "A"]],
+    "residues": [[515, 525]]
+  },
+  "2QD1": {
+    "type": "pi",
+    "chains": [["A", "A"]],
+    "residues": [[341, 361]]
+  },
+  "2BEG": {
+    "type": "parallel",
+    "chains": [["B", "B"], ["C", "C"], ["D", "D"]],
+    "residues": [[18, 26], [18, 26], [18, 26]]
+  },
+  "1OFS": {
+    "type": "lefttwist",
+    "chains": [["A", "A"], ["B", "B"]],
+    "residues": [[2, 8], [39, 46]]
+  },
+  "1BA7": {
+    "type": "righttwist",
+    "chains": [["A", "A"], ["A", "A"]],
+    "residues": [[94, 96], [104, 106]]
+  },
+  "2YXF": {
+    "type": "relaxed",
+    "chains": [["A", "A"], ["A", "A"]],
+    "residues": [[51, 56], [62, 69]]
+  },
+  "3CNA": {
+    "type": "bulge",
+    "chains": [["A", "A"], ["A", "A"]],
+    "residues": [[35, 36], [27, 27]],
+    "subtype": ["Classic bulge"],
+    "caption": ["Bulge between a narrow pair of hydrogen bonds, with residue at position 1 in approximately α-helical conformation and residue at position 2 in approximately normal β conformation. All three side chains are on the same side of the β sheet."]
+  },
+  "4CHA": {
+    "type": "bulge",
+    "chains": [["C", "C"], ["C", "C"]],
+    "residues": [[196, 197], [213, 213]],
+    "subtype": ["G1 β-bulge"],
+    "caption": ["Bulge with glycine in position 1 with torsion angles that are favorable only for glycine."]
+  },
+  "5CPA": {
+    "type": "bulge",
+    "chains": [["A", "A"], ["A", "A"], ["A", "A"], ["A", "A"]],
+    "residues": [[130, 131], [140, 140], [199, 200], [271, 271]],
+    "subtype": ["Gx NH β-bulge", "Gx CO bulge"],
+    "caption": ["Carbonyls on both sides of the α-carbon in position x are used to form the hydrogen bonds with the other strand. In the Gx type, glycine is probably preferred because a side chain would point almost directly into the other strand.", "The NH groups on both sides of the α-carbon in position x are used to form the hydrogen bonds with the other strand. In the Gx type, glycine is probably preferred because a side chain would point almost directly into the other strand."]
+  },
+  "155C": {
+    "type": "bulge",
+    "chains": [["A", "A"], ["A", "A"]],
+    "residues": [[35, 36], [19, 19]],
+    "subtype": ["Parallel bulge"],
+    "caption": ["Bulge with residue x on a parallel strand. Bulges are very rare in parallel β sheet."]
+  },
+  "6LUX": {
+    "type": "bulge",
+    "chains": [["A", "A"], ["A", "A"]],
+    "residues": [[46, 47], [81, 81]],
+    "subtype": ["Wide bulge"],
+    "caption": ["Bulge between a wide pair of hydrogen bonds on antiparallel β-strands."]
+  },
+  "2BK9": {
+    "type": "betaturn",
+    "chains": [["A", "A"]],
+    "residues": [[147, 150]],
+    "subtype": ["Type I"],
+    "caption": ["Type I β-turn. For this type, values of dihedral angles are close to: φ<sub>i+1</sub> = -60°, ψ<sub>i+1</sub> = -30°, φ<sub>i+2</sub> = -90°, and ψ<sub>i+2</sub> = 0°."]
+  },
+  "1KKO": {
+    "type": "betaturn",
+    "chains": [["A", "A"]],
+    "residues": [[77, 80]],
+    "subtype": ["Type I'"],
+    "caption": ["Type I' β-turn. For this type, values of dihedral angles are close to: φ<sub>i+1</sub> = 60°, ψ<sub>i+1</sub> = 30°, φ<sub>i+2</sub> = 90°, and ψ<sub>i+2</sub> = 0°.</br>Type I' is the mirror image of the backbone conformation of type I."]
+  },
+  "1H16": {
+    "type": "betaturn",
+    "chains": [["A", "A"]],
+    "residues": [[424, 427]],
+    "subtype": ["Type II"],
+    "caption": ["Type II β-turn. For this type, values of dihedral angles are close to: φ<sub>i+1</sub> = -60°, ψ<sub>i+1</sub> = 120°, φ<sub>i+2</sub> = 80°, and ψ<sub>i+2</sub> = 0°."]
+  },
+  "1UXA": {
+    "type": "betaturn",
+    "chains": [["A", "A"]],
+    "residues": [[213, 216]],
+    "subtype": ["Type II'"],
+    "caption": ["Type II' β-turn. For this type, values of dihedral angles are close to: φ<sub>i+1</sub> = 60°, ψ<sub>i+1</sub> = -120°, φ<sub>i+2</sub> = -80°, and ψ<sub>i+2</sub> = 0°.</br>Type II' is the mirror image of the backbone conformation of type II."]
+  },
+  "1JYK": {
+    "type": "betaturn",
+    "chains": [["A", "A"]],
+    "residues": [[32, 35]],
+    "subtype": ["Type IV<sub>1</sub>"],
+    "caption": ["Type IV<sub>1</sub>. Type IV includes any β-turns that do not match any of the criteria for other types."]
+  },
+  "1URS": {
+    "type": "betaturn",
+    "chains": [["A", "A"]],
+    "residues": [[296, 299]],
+    "subtype": ["Type IV<sub>2</sub>"],
+    "caption": ["Type IV<sub>2</sub>. Type IV includes any β-turns that do not match any of the criteria for other types."]
+  },
+  "1PA7": {
+    "type": "betaturn",
+    "chains": [["A", "A"]],
+    "residues": [[125, 128]],
+    "subtype": ["Type IV<sub>3</sub>"],
+    "caption": ["Type IV<sub>3</sub>. Type IV includes any β-turns that do not match any of the criteria for other types."]
+  },
+  "1QWG": {
+    "type": "betaturn",
+    "chains": [["A", "A"]],
+    "residues": [[194, 197]],
+    "subtype": ["Type IV<sub>4</sub>"],
+    "caption": ["Type IV<sub>4</sub>. Type IV includes any β-turns that do not match any of the criteria for other types."]
+  },
+  "1HBN": {
+    "type": "betaturn",
+    "chains": [["E", "E"]],
+    "residues": [[163, 166]],
+    "subtype": ["Type VI<sub>a1</sub>"],
+    "caption": ["Type VI<sub>a1</sub> β-turn. For this type, values of dihedral angles are close to: φ<sub>i+1</sub> = -60°, ψ<sub>i+1</sub> = 120°, φ<sub>i+2</sub> = -90°, and ψ<sub>i+2</sub> = 0°.</br>This type, just as the other VI types, is characterised by a cis-proline in position i+2."]
+  },
+  "1IQ6": {
+    "type": "betaturn",
+    "chains": [["A", "A"]],
+    "residues": [[68, 71]],
+    "subtype": ["Type VI<sub>a2</sub>"],
+    "caption": ["Type VI<sub>a2</sub> β-turn. For this type, values of dihedral angles are close to: φ<sub>i+1</sub> = -120°, ψ<sub>i+1</sub> = 120°, φ<sub>i+2</sub> = -60°, and ψ<sub>i+2</sub> = 0°.</br>This type, just as the other VI types, is characterised by a cis-proline in position i+2."]
+  },
+  "1YT3": {
+    "type": "betaturn",
+    "chains": [["A", "A"]],
+    "residues": [[141, 144]],
+    "subtype": ["Type VI<sub>b</sub>"],
+    "caption": ["Type VI<sub>b</sub> β-turn. For this type, values of dihedral angles are close to: φ<sub>i+1</sub> = -135°, ψ<sub>i+1</sub> = 135°, φ<sub>i+2</sub> = -75°, and ψ<sub>i+2</sub> = 160°.</br>This type, just as the other VI types, is characterised by a cis-proline in position i+2."]
+  },
+  "1SU8": {
+    "type": "betaturn",
+    "chains": [["A", "A"]],
+    "residues": [[435, 438]],
+    "subtype": ["Type VIII"],
+    "caption": ["Type VIII β-turn. For this type, values of dihedral angles are close to: φ<sub>i+1</sub> = -60°, ψ<sub>i+1</sub> = -30°, φ<sub>i+2</sub> = -120°, and ψ<sub>i+2</sub> = 120°."]
+  },
+  "1AAP": {
+    "type": "alphaturn",
+    "chains": [["B", "B"]],
+    "residues": [[24, 28]],
+    "subtype": ["Type I-α<sub>RS</sub>"],
+    "caption": ["Type I-α<sub>RS</sub>. For this type, values of dihedral angles are close to: φ<sub>i+1</sub> = (-60 ± 11)°, ψ<sub>i+1</sub> = (-29 ± 13)°, φ<sub>i+2</sub> = (-72 ± 14)°, ψ<sub>i+2</sub> = (-29 ± 15)°, φ<sub>i+3</sub> = (-96 ± 20)°, and ψ<sub>i+3</sub> = (-20 ± 17)°."]
+  },
+  "1FCB": {
+    "type": "alphaturn",
+    "chains": [["B", "B"]],
+    "residues": [[372, 376]],
+    "subtype": ["Type I-α<sub>LS</sub>"],
+    "caption": ["Type I-α<sub>LS</sub>. For this type, values of dihedral angles are close to: φ<sub>i+1</sub> = (48 ± 22)°, ψ<sub>i+1</sub> = (42 ± 14)°, φ<sub>i+2</sub> = (67 ± 9)°, ψ<sub>i+2</sub> = (33 ± 14)°, φ<sub>i+3</sub> = (70 ± 11)°, and ψ<sub>i+3</sub> = (32 ± 12)°."]
+  },
+  "3COX": {
+    "type": "alphaturn",
+    "chains": [["A", "A"]],
+    "residues": [[453, 457]],
+    "subtype": ["Type II-α<sub>RS</sub>"],
+    "caption": ["Type II-α<sub>RS</sub>. For this type, values of dihedral angles are close to: φ<sub>i+1</sub> = (-59 ± 10)°, ψ<sub>i+1</sub> = (129 ± 15)°, φ<sub>i+2</sub> = (88 ± 15)°, ψ<sub>i+2</sub> = (-16 ± 19)°, φ<sub>i+3</sub> = (-91 ± 22)°, and ψ<sub>i+3</sub> = (-32 ± 18)°."]
+  },
+  "1L76": {
+    "type": "alphaturn",
+    "chains": [["A", "A"]],
+    "residues": [[27, 31]],
+    "subtype": ["Type II-α<sub>LS</sub>"],
+    "caption": ["Type II-α<sub>LS</sub>. For this type, values of dihedral angles are close to: φ<sub>i+1</sub> = (53 ± 15)°, ψ<sub>i+1</sub> = (-137 ± 25)°, φ<sub>i+2</sub> = (-95 ± 12)°, ψ<sub>i+2</sub> = (81 ± 23)°, φ<sub>i+3</sub> = (57 ± 5)°, and ψ<sub>i+3</sub> = (38 ± 8)°."]
+  },
+  "4GCR": {
+    "type": "alphaturn",
+    "chains": [["A", "A"]],
+    "residues": [[136, 140]],
+    "subtype": ["Type I-α<sub>LU</sub>"],
+    "caption": ["Type I-α<sub>LU</sub>. For this type, values of dihedral angles are close to: φ<sub>i+1</sub> = (-61 ± 12)°, ψ<sub>i+1</sub> = (158 ± 15)°, φ<sub>i+2</sub> = (64 ± 17)°, ψ<sub>i+2</sub> = (37 ± 21)°, φ<sub>i+3</sub> = (62 ± 12)°, and ψ<sub>i+3</sub> = (39 ± 8)°."]
+  },
+  "1BBP": {
+    "type": "alphaturn",
+    "chains": [["C", "C"]],
+    "residues": [[142, 146]],
+    "subtype": ["Type I-α<sub>RU</sub>"],
+    "caption": ["Type I-α<sub>RU</sub>. For this type, values of dihedral angles are close to: φ<sub>i+1</sub> = (59 ± 18)°, ψ<sub>i+1</sub> = (-157 ± 31)°, φ<sub>i+2</sub> = (-67 ± 17)°, ψ<sub>i+2</sub> = (-29 ± 20)°, φ<sub>i+3</sub> = (-68 ± 12)°, and ψ<sub>i+3</sub> = (-39 ± 12)°."]
+  },
+  "1GP1": {
+    "type": "alphaturn",
+    "chains": [["B", "B"]],
+    "residues": [[75, 79]],
+    "subtype": ["Type II-α<sub>LU</sub>"],
+    "caption": ["Type II-α<sub>LU</sub>. For this type, values of dihedral angles are close to: φ<sub>i+1</sub> = (-65 ± 15)°, ψ<sub>i+1</sub> = (-20 ± 15)°, φ<sub>i+2</sub> = (-90 ± 17)°, ψ<sub>i+2</sub> = (16 ± 44)°, φ<sub>i+3</sub> = (86 ± 18)°, and ψ<sub>i+3</sub> = (37 ± 27)°."]
+  },
+  "1CMS": {
+    "type": "alphaturn",
+    "chains": [["A", "A"]],
+    "residues": [[11, 15]],
+    "subtype": ["Type II-α<sub>RU</sub>"],
+    "caption": ["Type II-α<sub>RU</sub>. For this type, values of dihedral angles are close to: φ<sub>i+1</sub> = (54 ± 8)°, ψ<sub>i+1</sub> = (39 ± 15)°, φ<sub>i+2</sub> = (67 ± 13)°, ψ<sub>i+2</sub> = (-5 ± 31)°, φ<sub>i+3</sub> = (-125 ± 11)°, and ψ<sub>i+3</sub> = (-34 ± 32)°."]
+  },
+  "1S01": {
+    "type": "alphaturn",
+    "chains": [["A", "A"]],
+    "residues": [[166, 170]],
+    "subtype": ["Type I-α<sub>C</sub>"],
+    "caption": ["Type I-α<sub>C</sub>. For this type, values of dihedral angles are close to: φ<sub>i+1</sub> = (-103 ± 23)°, ψ<sub>i+1</sub> = (143 ± 4)°, φ<sub>i+2</sub> = (-85 ± 8)°, ψ<sub>i+2</sub> = (2 ± 6)°, φ<sub>i+3</sub> = (-54 ± 6)°, and ψ<sub>i+3</sub> = (-39 ± 9)°."]
+  },
+  "2AYH": {
+    "type": "piturn",
+    "chains": [["A", "A"]],
+    "residues": [[96, 101]],
+    "subtype": ["Type π<sub>αL</sub>"],
+    "caption": ["Type π<sub>αL</sub>. For this type, the residue in position <i>i</i>+4 has a left-handed α-helical (α<sub>L</sub>) conformation."]
+  },
+  "4ENL": {
+    "type": "piturn",
+    "chains": [["A", "A"]],
+    "residues": [[67, 73]],
+    "subtype": ["Type π<sub>αR</sub>"],
+    "caption": ["Type π<sub>αR</sub>. For this type, the residue in position <i>i</i>+4 has a right-handed α-helical (α<sub>R</sub>) conformation.</br>Most of the time, residues in positions <i>i</i>+1 to <i>i</i>+3 also have α<sub>R</sub> conformation, so π<sub>αR</sub>-turns are, essentially, helical structures; however, they introduce a distortion that loosens the typical helical structure in the middle or at the ends of α-helices."]
+  },
+  "1HMY": {
+    "type": "piturn",
+    "chains": [["A", "A"]],
+    "residues": [[127, 132]],
+    "subtype": ["Type π'<sub>αL</sub>"],
+    "caption": ["Type π'<sub>αL</sub>. For this type, the peptide bonds that connect the central residues of the turn have dihedral angles of similar magnitudes as in π<sub>αL</sub>-turns, but of opposite signs, i.e., π'<sub>αL</sub>-turns are mirror images of π<sub>αL</sub>-turns."]
+  },
+  "1RND": {
+    "type": "piturn",
+    "chains": [["A", "A"]],
+    "residues": [[111, 116]],
+    "subtype": ["Type π<sub>β</sub>"],
+    "caption": ["Type π<sub>β</sub>. For this type, the residue in position <i>i</i>+4 has a β conformation, and the residue at position <i>i</i>+3 is a conserved <i>cis</i>-Pro."]
+  },
+  "1E1H": {
+    "type": "piturn",
+    "chains": [["B", "B"]],
+    "residues": [[324, 329]],
+    "subtype": ["Type π-NHB"],
+    "caption": ["Type π-NHB. In this type, a main-chain hydrogen bond between residues <i>i</i> and <i>i</i>+5 is absent (π-NHB)."]
+  },
+  "1AJS": {
+    "type": "piturn",
+    "chains": [["A", "A"]],
+    "residues": [[162, 167]],
+    "subtype": ["Type π-HB, isolated"],
+    "caption": ["Type π-HB, isolated. In this type, a main-chain hydrogen bond between residues <i>i</i> and <i>i</i>+5 is present (π-HB). In the example shown, the π-turn is part of a β-hairpin motif."]
+  },
+  "16PK": {
+    "type": "piturn",
+    "chains": [["A", "A"]],
+    "residues": [[382, 387]],
+    "subtype": ["Type π-HB SCH<sub>+β</sub>"],
+    "caption": ["Type π-HB SCH<sub>+β</sub>. In this type, a main-chain hydrogen bond between residues <i>i</i> and <i>i</i>+5 is present (π-HB); moreover, there is a Schellman (SCH) motif with an additional hydrogen bond between residues <i>i</i> and <i>i</i>+4 as part of an internal β-turn (+β). The π-turn shown terminates the end of an α-helix, as is characteristic for the Schellman motif."]
+  },
+  "8TLN": {
+    "type": "gammaturn",
+    "chains": [["E", "E"]],
+    "residues": [[25, 27]],
+    "subtype": ["Classic"],
+    "caption": ["The classic γ-turn is typically found at the end of a β-hairpin. It is stabilised by two hydrogen bonds one of which is straight, while the other one is strongly bent."]
+  },
+  "2SGA": {
+    "type": "gammaturn",
+    "chains": [["A", "A"]],
+    "residues": [[113, 115]],
+    "subtype": ["Inverse"],
+    "caption": ["The inverse γ-turn is rarely part of β-hairpins. It is stabilised by only one hydrogen bond and gives rise to a kink."]
+  },
+  "1NJH": {
+    "type": "deltaturn",
+    "chains": [["A", "A"]],
+    "residues": [[63, 64]],
+    "subtype": ["Gly-Pro"],
+    "caption": ["Gly-Pro. According to conformational energy calculations, the most favourable dihedral angles are: φ<sub>i</sub> = 173°, ψ<sub>i</sub> = 85°, φ<sub>i+1</sub> = -75°, and ψ<sub>i+1</sub> = 167°."]
+  },
+  "2BMH": {
+    "type": "deltaturn",
+    "chains": [["A", "A"]],
+    "residues": [[195, 196]],
+    "subtype": ["Asp-Pro"],
+    "caption": ["Asp-Pro. This is a more unusual example for δ-turns where both dihedral angles of the proline are negative so that the residue has a right-handed helical conformation."]
+  },
+  "1KB0": {
+    "type": "epsilonturn",
+    "chains": [["A", "A"]],
+    "residues": [[617, 619]],
+    "subtype": ["1"],
+    "caption": ["Family 1."]
+  },
+  "1QXY": {
+    "type": "epsilonturn",
+    "chains": [["A", "A"]],
+    "residues": [[171, 173]],
+    "subtype": ["2"],
+    "caption": ["Family 2."]
+  },
+  "3O12": {
+    "type": "epsilonturn",
+    "chains": [["A", "A"]],
+    "residues": [[110, 112]],
+    "subtype": ["3"],
+    "caption": ["Family 3."]
+  },
+  "2RA6": {
+    "type": "epsilonturn",
+    "chains": [["A", "A"]],
+    "residues": [[93, 95]],
+    "subtype": ["4"],
+    "caption": ["Family 4."]
+  },
+  "3F9M": {
+    "type": "epsilonturn",
+    "chains": [["A", "A"]],
+    "residues": [[227, 229]],
+    "subtype": ["5"],
+    "caption": ["Family 5."]
+  },
+  "1HPG": {
+    "type": "epsilonturn",
+    "chains": [["A", "A"]],
+    "residues": [[221, 223]],
+    "subtype": ["6"],
+    "caption": ["Family 6."]
+  },
+  "1LRI": {
+    "type": "coil",
+    "chains": [["A", "A"], ["A", "A"], ["A", "A"]],
+    "residues": [[1, 3], [33, 42], [67, 72]]
+  }
+};
+ var JmolInfo = {
+ width:'100%',
+ height:'100%',
+ color:'#FFFFFF',
+ j2sPath:'jsmol/jsmol/j2s',
+ serverURL:'jsmol/jsmol/php/jsmol.php',
+ use:'html5',
+ loadStructCallback:'moleculeLoaded',
+ measureCallback:'measurementDone',
+ messageCallback:'messageReceived'
+}
+
+const currentIDs = {
+  "bulge": 0,
+  "piturn": 0,
+  "alphaturn": 0,
+  "betaturn": 0,
+  "gammaturn": 0,
+  "deltaturn": 0,
+  "epsilonturn": 0
+}
+
+const currentMeasurementLabels = {
+  "piturn": 0,
+  "alphaturn": 0,
+  "betaturn": 0,
+  "gammaturn": 0,
+  "deltaturn": 0,
+  "epsilonturn": 0
+}
+
+var contentLoaded = {
+"secondarystructures": false,
+"helices": false,
+"strands": false,
+"turns": false,
+"regular": false,
+"distorted": false,
+"threeten": false,
+"pihelix": false,
+"parallel": false,
+"antiparallel": false,
+"lefttwist": false,
+"relaxed": false,
+"righttwist": false,
+"bulge": false,
+"piturns": false,
+"alphaturns": false,
+"betaturns": false,
+"gammaturns": false,
+"epsilonturns": false,
+"deltaturns": false,
+"coil": false
+}
+
+var jmol_intro = 'jmol_intro';
+var jmol_helices = 'jmol_helices';
+var jmol_strands = 'jmol_strands';
+var jmol_turns = 'jmol_turns';
+var jmol_regular = 'jmol_regular';
+var jmol_distorted = 'jmol_distorted';
+var jmol_310 = 'jmol_310';
+var jmol_pi = 'jmol_pi';
+var jmol_parallel = 'jmol_parallel';
+var jmol_lefttwist = 'jmol_lefttwist';
+var jmol_relaxed = 'jmol_relaxed';
+var jmol_righttwist = 'jmol_righttwist';
+var jmol_bulge = 'jmol_bulge';
+var jmol_piturn = 'jmol_piturn';
+var jmol_alphaturn = 'jmol_alphaturn';
+var jmol_betaturn = 'jmol_betaturn';
+var jmol_gammaturn = 'jmol_gammaturn';
+var jmol_deltaturn = 'jmol_deltaturn';
+var jmol_epsilonturn = 'jmol_epsilonturn';
+var jmol_coil = 'jmol_coil';
+ 
+var typingTimer;
+var doneTypingInterval = 500;
+var sequenceChanges = [];
+
+var dragState = 0;
+var introDihedralAngles = [];
+var scriptBusy = false;
+
+function messageReceived() {
+	let message = arguments[1];
+	//console.log("JSMol: " + message);
+	if (message.startsWith("Measurement Information")) {
+		//console.log("Measurement Information obtained.");
+		introDihedralAngles = message.split(/\r?\n|\r|\n/g);
+		introDihedralAngles.forEach((item, index, arr) => {
+			introDihedralAngles[index] = item.split("\t");
+		});
+		dragState = 1;
+	}
+	if (message == "Script completed") {
+		//console.log("JSMol: " + message);
+		scriptBusy = false;
+	}
+}
+
+$(document).ready(function(){
+	// Restrict input to one letter codes for amino acids
+	const regex = new RegExp("^[acdefghiklmnpqrstvwy]*$");
+
+	document.getElementById("sequence").addEventListener("beforeinput", (event) => {
+	  if (event.data != null && !regex.test(event.data)) 
+	    event.preventDefault();
+	});
+	
+	// Monitor key strokes in the sequence
+	
+	document.getElementById("sequence").onkeyup = function(evt) {
+		clearTimeout(typingTimer);
+		typingTimer = setTimeout(commitSequenceChanges, doneTypingInterval);
+	};
+	
+	document.getElementById("sequence").onkeydown = function(evt) {
+		clearTimeout(typingTimer);
+		const allowedKeyCodes = [8, 46, 65, 67, 68, 69, 70, 71, 72, 73, 75, 76, 77, 78, 80, 81, 82, 83, 84, 86, 87, 89]; // Only look for Backspace, Delete, and the 20 single letter amino acid codes
+		if (allowedKeyCodes.includes(evt.keyCode)) {
+			storeSequenceChanges(evt);
+		}
+	};
+	
+	// Monitor dragging in sequence input field
+	
+	var dragging = false;
+	
+	document.getElementById("sequence").ondragstart = function(evt) {
+		if (dragging == false) {
+			dragging = true;
+			storeSequenceChanges(evt);
+		}
+	};
+
+	document.getElementById("sequence").ondragend = function(evt) {
+		dragging = false;
+		Jmol.script(jmol_intro, 'script preLoadingScript.txt;');
+		storeSequenceChanges(evt);
+		commitSequenceChanges();
+	};
+	
+	// Show molecule for default sequence
+
+	mainTextControl();
+
+	$('#JmolDiv_intro').html( Jmol.getAppletHtml(jmol_intro, JmolInfo) );
+	Jmol.script(jmol_intro, 'set disablePopupMenu FALSE;frank off;set perspectiveDepth off;selectionHalos ON;color SELECTIONHALOS [158,36,123];set showHiddenSelectionHalos FALSE;');
+
+	sequenceInitialise();
+	
+	updateRamachandran();
+});
+</script>
+
+<script type="text/javascript">
+ Jmol.setLinkCss(null, "style='color:#9e247b'");
+</script>
+
+</head>
+<body>
+
+<div id="mainBox">
+	<div id="secondarystructures" class="structureBox clickeable">
+		<div id="sselements_title" class="structureBoxTitle" style="pointer-events:none;"><b>Secondary Structure Elements</b></div>
+			<div id="helices" class="structureBox clickeable" style="display:block;align-items:center;">
+				<div id="helices_title" class="structureBoxTitle" style="pointer-events:none;">Helices</div>
+				<div id="pihelix" class="structureBox singleItem clickeable">
+					<div style="pointer-events:none;">π&#8209;Helices&nbsp;<span style="color:rgba(255, 255, 255, 0.5);">(<i>i</i> → <i>i</i> - 5)</span></div>
+				</div>
+				<div id="alphahelices" class="structureBox" style="display:block;">
+					<div id="alphahelices_title" class="structureBoxTitle">α-Helices&nbsp;<span style="color:rgba(255, 255, 255, 0.5);">(<i>i</i> → <i>i</i> - 4)</span></div>
+					<div id="regular" class="structureBox singleItem clickeable">
+						Regular
+					</div>
+					<div id="distorted" class="structureBox singleItem clickeable">
+						Distorted
+					</div>
+				</div>
+				<div id="threeten" class="structureBox singleItem clickeable">
+					<div style="pointer-events:none;">3<sub>10</sub>&#8209;Helices&nbsp;<span style="color:rgba(255, 255, 255, 0.5);">(<i>i</i> → <i>i</i> - 3)</span></div>
+				</div>
+			</div>
+			<div id="strands" class="structureBox clickeable" style="position:relative;">
+				<div id="strands_title" class="structureBoxTitle" style="pointer-events:none;">β-Strands</div>
+				<div id="parallel" class="structureBox clickeable">
+					Parallel
+				</div>
+				<div id="antiparallel" class="structureBox" style="border-style:dashed;">
+					Anti-Parallel
+					<div id="relaxed" class="structureBox clickeable">
+						Relaxed
+					</div>
+					<div id="righttwist" class="structureBox clickeable">
+						Right-Twisted
+					</div>
+					<div id="lefttwist" class="structureBox clickeable">
+						Left-Twisted
+					</div>
+				</div>
+				<div id="bulge" class="structureBox clickeable" style="position:absolute;top:165px;right:10px;transform: translate(0%, -50%);">
+					<div id="bulge_title" class="structureBoxTitle" style="pointer-events:none;">β-Bulge</div>
+					<div id="bulge_parallel" class="structureBox singleItem" style="pointer-events:none;">
+						Parallel
+					</div>
+					<div id="bulge_classic" class="structureBox singleItem" style="pointer-events:none;">
+						Classic
+					</div>
+					<div id="bulge_g1" class="structureBox singleItem" style="pointer-events:none;">
+						G1
+					</div>
+					<div id="bulge_gx" class="structureBox singleItem" style="pointer-events:none;">
+						Gx
+					</div>
+					<div id="bulge_wide" class="structureBox singleItem" style="pointer-events:none;">
+						Wide
+					</div>
+				</div>
+			</div>
+			<div id="turns" class="structureBox clickeable">
+				<div id="turns_title" class="structureBoxTitle" style="pointer-events:none;">Turns</div>
+				<div id="piturns" class="structureBox">
+					<div style="text-align:center;pointer-events:none;">π-Turns</br><span style="color:rgba(255, 255, 255, 0.5);">(<i>n</i> = 6)</span></div>
+					<ul class="bulletList">
+						<li>π<sub>αL</sub></li>
+						<li>π<sub>αR</sub></li>
+						<li>π’<sub>αL</sub></li>
+						<li>π<sub>β</sub></li>
+						</br>
+						<li>π&#8209;NHB</li>
+						<li>π&#8209;HB</li>
+						<li>SCH<sub>+β</sub></li>
+						<li>SCH<sub>-β</sub></li>
+					</ul>
+				</div>
+				<div id="alphaturns" class="structureBox">
+					<div style="text-align:center;pointer-events:none;">α-Turns</br><span style="color:rgba(255, 255, 255, 0.5);">(<i>n</i> = 5)</span></div>
+					<ul class="bulletList">
+						<li>I&#8209;α<sub>RS</sub></li>
+						<li>I&#8209;α<sub>LS</sub></li>
+						<li>II&#8209;α<sub>RS</sub></li>
+						<li>II&#8209;α<sub>LS</sub></li>
+						<li>I&#8209;α<sub>LU</sub></li>
+						<li>I&#8209;α<sub>RU</sub></li>
+						<li>II&#8209;α<sub>LU</sub></li>
+						<li>II&#8209;α<sub>RU</sub></li>
+						<li>I&#8209;α<sub>C</sub></li>
+					</ul>
+				</div>
+				<div id="betaturns" class="structureBox">
+					<div style="text-align:center;pointer-events:none;">β-Turns</br><span style="color:rgba(255, 255, 255, 0.5);">(<i>n</i> = 4)</span></div>
+					<ul class="bulletList">
+						<li>I</li>
+						<li>I’</li>
+						<li>II</li>
+						<li>II’</li>
+						<li>IV<sub>1&nbsp;to&nbsp;4</sub></li>
+						<li>VI<sub>a1</sub></li>
+						<li>VI<sub>a2</sub></li>
+						<li>VI<sub>b</sub></li>
+						<li>VIII</li>
+					</ul>
+				</div>
+				<div id="gammaturns" class="structureBox">
+					<div style="text-align:center;pointer-events:none;">γ-Turns</br><span style="color:rgba(255, 255, 255, 0.5);">(<i>n</i> = 3)</span></div>
+					<ul class="bulletList">
+						<li>Classic</li>
+						<li>Inverse</li>
+					</ul>
+				</div>
+				<div id="epsilonturns" class="structureBox">
+					<div style="text-align:center;pointer-events:none;">ɛ-Turns</br><span style="color:rgba(255, 255, 255, 0.5);">(<i>n</i> = 3)</span></div>
+					<ul class="bulletList">
+						<li>Family&nbsp;1</li>
+						<li>Family&nbsp;2</li>
+						<li>Family&nbsp;3</li>
+						<li>Family&nbsp;4</li>
+						<li>Family&nbsp;5</li>
+						<li>Family&nbsp;6</li>
+					</ul>
+				</div>
+				<div id="deltaturns" class="structureBox">
+					<div style="text-align:center;pointer-events:none;">δ-Turns</br><span style="color:rgba(255, 255, 255, 0.5);">(<i>n</i> = 2)</span></div>
+				</div>
+			</div>	
+			<div id="coil" class="structureBox singleItem"">
+				<div id="randomcoil_title" class="structureBoxTitle">Random Coil</div>
+			</div>
+	</div>
+
+	<div id="secondarystructures_content" style="display:block;" class="sscontent">
+		<div id="secondarystructures_interactiveContent" style="margin-right:20px;">
+			<h2>Secondary Structure Elements</h2>
+		</div>
+
+		<div id="secondarystructures_explainingText" class="explainingtext">
+			<p>For many decades, the most prevalent application of Circular Dichroism spectroscopy has been the quantification of secondary structure in polypeptides. To this end, far-UV CD data are subjected to secondary structure decomposition analysis, which yields estimates for the fractional amounts of different secondary structure elements in the peptide or protein of interest. Usually, the results are expressed in percentages and always include at least numbers for helices, sheets, turns, and random coil secondary structure. But what exactly are these?</p>
+			
+			<p>In brief, secondary structure refers to the local geometry of the polypeptide backbone and well-defined, often repetitive patterns of stabilising hydrogen bonds. Based on these criteria, different classes of secondary structure elements can be defined. To the left you can see an overview of most of these classes described in the literature. Explore this gallery of more than five dozen protein structures to learn about secondary structure element classes and subclasses and create a small peptide in our playground below to gain a better understanding of the underlying principles of classification.</p>
+			
+			<p>After spending some time on this page, you will be able to appreciate that secondary structure is not just about α-helices and β-sheets. There are many known subclasses, some of which (shown in <span style="color:#0058a7;"><b>blue</b></span>) are not even included in any of the tools availalbe for secondary structure decomposition analysis for far-UV CD data. This is one of the reasons why results obtained with this traditional data analysis approach should be considered estimates rather than accurate, definite answers.</p>
+			
+			<p>In fact, not even secondary structure content based on 3d models obtained from x-ray crystallography or NMR is definite. Secondary structure assignments based on 3d structures are most often carried out using the DSSP algorithm developed by Kabsch and Sander in 1983. However, other valid algorithms for this purpose exist that make use of different criteria and won't yield the exact same assignments (<a href="#Martin" onclick="reference(this.href);">Martin et al. 2005</a>). Secondary structure assignments based on such algorithms are always employed for the compilation of reference far-UV CD data sets that secondary structure decomposition analysis relies upon. This poses another factor that ultimately affects the accuracy of this kind of analysis.</p>
+			 <!--- Write something about the color code / which sub structures can or cannot be identified based on CD data ---->
+		</div>
+	</div>
+
+	<div id="helices_content" style="display:none;" class="sscontent">
+		<div id="helices_interactiveContent" style="margin-right:20px;">
+			<h2>Helices</h2>
+			<a id="helices_backbone_toggle" data-backbone="hidden" onClick="setView('idealalpha', '6')" style="cursor: pointer; cursor: hand;color:#9e247b;text-decoration:underline;">Show backbone atoms</a>
+			<a id="helices_sidechains_toggle" data-sidechains="visible" onClick="setView('idealalpha', '1')" style="cursor: pointer; cursor: hand;color:#9e247b;text-decoration:underline;">Hide sidechains</a>
+			<a id="helices_hbonds_toggle" data-hbonds="hidden" onClick="setView('idealalpha', '2')" style="cursor: pointer; cursor: hand;color:#9e247b;text-decoration:underline;">Show H-bonds</a>
+			<a id="helices_axis_toggle" data-axis="visible" onClick="setView('idealalpha', '3')" style="cursor: pointer; cursor: hand;color:#9e247b;text-decoration:underline;">Hide helical axis</a>
+			<a id="helices_termini_toggle" data-termini="hidden" onClick="setView('idealalpha', '4')" style="cursor: pointer; cursor: hand;color:#9e247b;text-decoration:underline;">Show termini &amp; caps</a>
+			<a id="helices_dipoles_toggle" data-dipoles="hidden" onClick="setView('idealalpha', '5')" style="cursor: pointer; cursor: hand;color:#9e247b;text-decoration:underline;">Show dipole moments</a>
+
+			<div id="JmolDiv_helices" class="jmolContainer"></div>
+		</div>
+		<!--- XXX Maybe write something about the often amphiphilic nature of helices? Or maybe rather leave that for tertiary structure, because it makes more sense explaining this in context. --->
+		<div id="helices_explainingText" class="explainingtext">
+			<p id="helices_text1" data-active="false" class="hoverable">&#128432; Helices in polypetides comprised of L-amino acids are virtually always right-handed, i.e., when looking down the <span style="color:#abb592;"><b>helical axis</b></span> and tracing the trajectory of the <span style="color:#9e247b;"><b>main chain</b></span> into the distance, the <span style="color:#719070;"><b>projection</b></span> of this trace will follow a clockwise direction. The <span style="color:#95c03d;"><b>side chains</b></span> of the amino acid residues are more or less staggered and point away from the helical axis. </p>
+			<p id="helices_text2" data-active="false" class="hoverable">&#128432; The main chain of a helix is stabilised by intrahelical <span style="color:#f79424;"><b>hydrogen bonds</b></span>. A helix consisting of <i>n</i> residues will always only have up to <i>n</i>&nbsp;-&nbsp;4 hydrogen bonds because neither the N-H groups of the four residues at the start (<span style="color:#005a9d;"><b>N-terminus</b></span>) nor the C=O groups of the four residues at the end (<span style="color:#b51726;"><b>C-terminus</b></span>) of the helix participate in intrahelical hydrogen bonds. The very first and very last residue of a helix is called <span style="color:#0000ff;"><b>N-Cap</b></span> and <span style="color:#ff0000;"><b>C-Cap</b></span>, respectively.</p>
+			
+			<p id="helices_text3" data-active="false" class="hoverable">&#128432; Due to the relatively high electronegativity of <span style="color:#0000ff;"><b>nitrogen</b></span> and <span style="color:#ff0000;"><b>oxygen</b></span>, the N-H and C=O groups of peptide bonds have partial charges which result in a strong dipole moment. As all peptide groups point more or less into the same direction parallel to the helical axis, the <span style="color:#000000;"><b>amide dipole moments</b></span> are in near perfect alignment and cumulatively form a helix macrodipole where the N&#8209;terminus and C&#8209;terminus have unit charges of approximately δ<sup>+</sup>&nbsp;=&nbsp;+0.5 and δ<sup>-</sup>&nbsp;=&nbsp;-0.5, respectively.</p>
+			
+			<p>Three types of helices can be defined based on the number <i>n</i> of peptide bonds between any two residues that provide the donor (<i>i</i> + <i>n</i>) and acceptor group (<i>i</i>) for a hydrogen bond:
+			<ul><li>π-helices (<i>i</i> + 5 → <i>i</i>)</li>
+			<li>α-Helices (<i>i</i> + 4 → <i>i</i>)</li>
+			<li>3<sub>10</sub>-helices (<i>i</i> + 3 → <i>i</i>)
+			</ul>
+			On average, α-helices account for about a third of the secondary structures observed in proteins, whereas 3<sub>10</sub>-helices and π-helices are less abundant, contributing to about 4% and less than 1% of average protein secondary structure, respectively. Short segments of these rarer types of helices are often found at the ends of α-helices.</p>
+			
+		</div>
+	</div>
+
+	<div id="pihelix_content" style="display:none;" class="sscontent">
+		<div id="pihelix_interactiveContent" style="margin-right:20px;">
+			<h2>π-Helices</h2>
+			<a onClick="setView('2QD1', '1')" style="cursor: pointer; cursor: hand;color:#9e247b;text-decoration:underline;">Reset View</a>
+			<a id="pi_hbonds_toggle" data-hbonds="hidden" onClick="setView('2QD1', '2')" style="cursor: pointer; cursor: hand;color:#9e247b;text-decoration:underline;">Show backbone with H-bonds</a>
+
+			<div id="JmolDiv_pi" class="jmolContainer"></div>
+		</div>
+		<div id="pihelix_explainingText" class="explainingtext">
+			<p>In π-helices, hydrogen bonds are formed between the amino group of one residue (<i>i</i>) and the carbonyl group of the residue five residues upstream in the sequence (<i>i</i>&nbsp;-&nbsp;5).</p><p>π-Helices follow certain overall charasteristics:</p>
+			<ul>
+				<li>Any two <b>consecutive residues</b> are
+					<ul>
+						<li>translated by 1.15 Å relative to each other.</li>
+						<li>rotated around the helical axis by 87° relative to each other.</li>
+					</ul>
+				</li>
+				
+				<li>A <b>single turn</b> in the helix 
+					<ul>
+						<li>corresponds to 4.4 amino acids.</li>
+						<li>has a pitch (i.e., vertical distance between consecutive turns) of 1.15 Å · 4.4 = 5.1 Å.</li>
+					</ul>
+				<li>The <b>dihedral angles</b> are typically close to φ ≈ -57° and ψ ≈ -70°.</li>
+			</ul>
+		</div>
+	</div>
+
+	<div id="regular_content" style="display:none;" class="sscontent">
+		<div id="regular_interactiveContent" style="margin-right:20px;">
+			<h3>Regular α-Helices</h3>
+			<a onClick="setView('6EC0', '1')" style="cursor: pointer; cursor: hand;color:#9e247b;text-decoration:underline;">Reset View</a>
+			<a id="regular_hbonds_toggle" data-hbonds="hidden" onClick="setView('6EC0', '2')" style="cursor: pointer; cursor: hand;color:#9e247b;text-decoration:underline;">Show backbone with H-bonds</a>
+
+			<div id="JmolDiv_regular" class="jmolContainer"></div>
+		</div>
+		<div id="regular_explainingText" class="explainingtext">
+			<p>Hydrogen bonds of α-Helices are formed between the amino group of one residue (<i>i</i>) and the carbonyl group of the residue four residues upstream in the sequence (<i>i</i>&nbsp;-&nbsp;4).</p><p>Regular α-Helices are more or less straight, have an average length of 10 to 12 residues, and follow certain overall charasteristics:</p>
+			<ul>
+				<li>Any two <b>consecutive residues</b> are
+					<ul>
+						<li>translated by 1.5 Å relative to each other.</li>
+						<li>rotated around the helical axis by 100° relative to each other.</li>
+					</ul>
+				</li>
+				
+				<li>A <b>single turn</b> in the helix 
+					<ul>
+						<li>corresponds to 3.6 amino acids.</li>
+						<li>has a pitch (i.e., vertical distance between consecutive turns) of 1.5 Å · 3.6 = 5.4 Å.</li>
+					</ul>
+				<li>The <b>dihedral angles</b> are typically close to φ ≈ -58° and ψ = -47°.</li>
+			</ul>
+		</div>
+	</div>
+
+	<div id="distorted_content" style="display:none;" class="sscontent">
+		<div id="distorted_interactiveContent" style="margin-right:20px;">
+			<h3>Distorted α-Helices</h3>
+			<button class="button" onclick="distorted(-1)">←</button>
+			<span id="PDB_ID_distorted"></span>
+			<button class="button" onclick="distorted(1)">→</button>
+			<br><span id="caption_distorted"></span>
+
+			<div id="JmolDiv_distorted" class="jmolContainer"></div>
+		</div>
+		<div id="distorted_explainingText" class="explainingtext">
+			<p>
+			Canonical α-helices hardly exist, as dihedral angles and other characteristics rarely conform to strict textbook definitions. Deviations from ideal conformation often observed include:
+			<ul>
+				<li>Curvature of the helical axis (~60&nbsp;Å radius, <a href="#Barlow" onclick="reference(this.href);">Barlow et al. 1988</a>)</li>
+				<li>Splits, breaks, kinks, or bends</li>
+				<li>Distortions located at the helix 
+				<ul>
+				<li>caps, i.e., first (N-cap) or last (C-cap) residue of the helix</li>
+				<li>termini, i.e., first (N-terminus) or last (C-terminus) few residues at either end of the helix</li>
+				</ul>
+				</li>
+			</ul>
+			Such irregularities can involve dihedral angles that are more typical for other secondary structure elements. On average, about one third of residues in α-helices can be considered distorted.
+			</p>
+			<p>
+			Atypical helix conformations are promoted by certain amino acids because their side chains impose restictions on the torsion angles of the main chain, as otherwise steric clashes would occur. This includes, for example, amino acids with side chains that are branched at the β-carbon atom such as threonine or valine. Due to their inferior capability to stabilise a helical structure, these amino acids have a lower propensity to occur within α-helices.
+			</p>
+			<p>
+			Breaks or kinks are often introduced by proline because its backbone nitrogen is unavailable for the formation of hydrogen bonds.
+			</p>
+		</div>
+	</div>
+
+	<div id="threeten_content" style="display:none;" class="sscontent">
+		<div id="threeten_interactiveContent" style="margin-right:20px;">
+			<h2>3<sub>10</sub>-Helices</h2>
+			<a onClick="setView('1GPB', '1')" style="cursor: pointer; cursor: hand;color:#9e247b;text-decoration:underline;">Reset View</a>
+			<a id="threeten_hbonds_toggle" data-hbonds="hidden" onClick="setView('1GPB', '2')" style="cursor: pointer; cursor: hand;color:#9e247b;text-decoration:underline;">Show backbone with H-bonds</a>
+
+			<div id="JmolDiv_310" class="jmolContainer"></div>
+		</div>
+		<div id="threeten_explainingText" class="explainingtext">
+			<p>In 3<sub>10</sub>-helices, hydrogen bonds are formed between the amino group of one residue (<i>i</i>) and the carbonyl group of the residue three residues upstream in the sequence (<i>i</i>&nbsp;-&nbsp;3).</p><p>3<sub>10</sub>-Helices are typically short with an average length of 3 to 5 residues and follow certain overall charasteristics:</p>
+			<ul>
+				<li>Any two <b>consecutive residues</b> are
+					<ul>
+						<li>translated by 2.0 Å relative to each other.</li>
+						<li>rotated around the helical axis by 120° relative to each other.</li>
+					</ul>
+				</li>
+				
+				<li>A <b>single turn</b> in the helix 
+					<ul>
+						<li>corresponds to 3 amino acids.</li>
+						<li>has a pitch (i.e., vertical distance between consecutive turns) of 2 Å · 3 = 6 Å.</li>
+					</ul>
+				<li>The <b>dihedral angles</b> are typically close to φ ≈ -49° and ψ ≈ -26°.</li> <!-- -74 / -4?!-->
+			</ul>
+			<p>3<sub>10</sub>-Helices make up about 10 to 15% of all helices. Their name originates from a historical designation based on the number of residues per helical turn (3) and the number of backbone atoms (10) between a hydrogen bond's donor and acceptor groups.</p>
+		</div>
+	</div>
+
+	<div id="strands_content" style="display:none;" class="sscontent">
+		<div id="strands_interactiveContent" style="margin-right:20px;">
+			<h2>Strands</h2>
+			<a onClick="setView('2TRX', '0')" style="cursor: pointer; cursor: hand;color:#9e247b;text-decoration:underline;">Reset View</a>
+			<a id="strands_sidechains_toggle" data-sidechains="visible" onClick="setView('2TRX', '1')" style="cursor: pointer; cursor: hand;color:#9e247b;text-decoration:underline;">Hide sidechains</a>
+			<a id="strands_hbonds_toggle" data-hbonds="visible" onClick="setView('2TRX', '2')" style="cursor: pointer; cursor: hand;color:#9e247b;text-decoration:underline;">Hide H-bonds</a>
+
+			<div id="JmolDiv_strands" class="jmolContainer"></div>
+		</div>
+		<div id="strands_explainingText" class="explainingtext">
+			<p>In β-strands, the backbone has an extended conformation with dihedral angles of ideally φ&nbsp;≈&nbsp;-120° and ψ&nbsp;≈&nbsp;+120°, which might be conceptualised as a stretched-out helix with two residues per turn.</p>
+			<p id="strands_text1" data-active="false" class="hoverable">&#128432; Within a single β-strand, i.e., a segment of limited length with this conformation, the amide and carbonyl groups are too far apart to form hydrogen bonds with each other. Therefore, β-strands are virtually never found in isolation; instead, multiple strands align alongside each other so that <span style="color:#f79424;"><b>hydrogen bonds</b></span> can form between them and stabilise a larger structure, the β-sheet.</p>
+			<p id="strands_text2" data-active="false" class="hoverable">&#128432; Parallel and anti-parallel β-sheets can be distinguished, depending on which direction strands are aligned in relative to each other. However, mixed β-sheets that include both are possible, as shown here for human thioredoxin.</p>
+			<p id="strands_text3" data-active="false" class="hoverable">&#128432; β-Sheets are sometimes called "pleated" β-sheets because consecutive C<sub>α</sub>-atoms and their corresponding <span style="color:#95c03d;"><b>side chains</b></span> are alternatingly located on either side of the sheet's plane.</p>
+			<p>On average, β-strands span 6 residues, and most β-sheets consist of fewer than 6 strands. About a quarter of the residues in known protein structures have a beta-sheet conformation.</p>
+		</div>
+	</div>
+
+	<div id="parallel_content" style="display:none;" class="sscontent">
+		<div id="parallel_interactiveContent" style="margin-right:20px;">
+			<h2>Parallel β-Strands</h2>
+			<a onClick="setView('2BEG', '1')" style="cursor: pointer; cursor: hand;color:#9e247b;text-decoration:underline;">Reset View</a>
+
+			<div id="JmolDiv_parallel" class="jmolContainer"></div>
+		</div>
+		<div id="parallel_explainingText" class="explainingtext">
+			<p>It is possible for more distant parts of an amino acid sequence to form strands and come together with the same direction to form parallel β-sheets. On average, the dihedral angles in untwisted parallel β-sheets are close to φ&nbsp;≈&nbsp;-116° and ψ&nbsp;≈&nbsp;+118° (<a href="#Nesloney" onclick="reference(this.href);">Nesloney et al. 1996</a>).</p>
+			
+			<p>The <span style="color:#abb592;"><b>distances</b></span> between hydrogen bonds formed between adjacent strands are more or less equivalent in parallel β-sheets. Moreover, the <span style="color:#f79424;"><b>hydrogen bonds</b></span> in parallel β-sheets are neither perpendicular to the strands nor parallel to each other. Due to this hydrogen bonding geometry, parallel β-sheets are less stable than anti-parallel β-sheets, which might be the reason why parallel β-sheets usually contain at least four strands and don't show the same propensity for twists or bulges.</p>
+		</div>
+	</div>
+
+	<div id="lefttwist_content" style="display:none;" class="sscontent">
+		<div id="lefttwist_interactiveContent" style="margin-right:20px;">
+			<h3>Left-Twisted Anti-Parallel β-Strands</h3>
+			<a onClick="setView('1OFS', '1')" style="cursor: pointer; cursor: hand;color:#9e247b;text-decoration:underline;">Reset View</a>
+
+			<div id="JmolDiv_lefttwist" class="jmolContainer"></div>
+		</div>
+		<div id="lefttwist_explainingText" class="explainingtext">
+			<p>Left-twisted β-sheets are virtually never observed because right-twisted β-sheets are energetically favoured. This is, in part, due to steric hindrance that would occur in left-twisted β-sheets, but also due to hydrogen bonding (<a href="#Shamovsky" onclick="reference(this.href);">Shamovsky et al. 2000</a>) and electrostatic effects (<a href="#Maccallum" onclick="reference(this.href);">Maccallum et al. 1995</a>).</p>
+			
+			<p>The example shows β-strands in pea lectin that are slighty left-twisted at least locally. Left-handed twists usually involve glycine, because it is the only amino acid that lacks a β-carbon and, thus, cannot suppress a left-hand twist (<a href="#Shamovsky" onclick="reference(this.href);">Shamovsky et al. 2000</a>).</p>
+		</div>
+	</div>
+
+	<div id="relaxed_content" style="display:none;" class="sscontent">
+		<div id="relaxed_interactiveContent" style="margin-right:20px;">
+			<h3>Relaxed Anti-Parallel β-Strands</h3>
+			<a onClick="setView('2YXF', '1')" style="cursor: pointer; cursor: hand;color:#9e247b;text-decoration:underline;">Reset View</a>
+
+			<div id="JmolDiv_relaxed" class="jmolContainer"></div>
+		</div>
+		<div id="relaxed_explainingText" class="explainingtext">
+			<p>A β-sheet often conists of strands that span the amino acid sequence sequentially and are separated only by short turns; this results in anti-parallel β-sheets, because the backbone changes direction as it folds onto itself.</p>
+			<p>Relaxed, anti-parallel β-sheets form a pattern of alternating <span style="color:#abb592;"><b>shorter</b></span> and <span style="color:#719070;"><b>longer</b></span> distances between consecutive hydrogen bonds. Moreover, the <span style="color:#f79424;"><b>hydrogen bonds</b></span> are both perpendicular to the strands and more or less parallel to each other. On average, the dihedral angles in untwisted anti-parallel β-sheets are close to φ&nbsp;≈&nbsp;-145° and ψ&nbsp;≈&nbsp;+140° (<a href="#Nesloney" onclick="reference(this.href);">Nesloney et al. 1996</a>).</p>
+			<p>Truely relaxed β-sheets are not that common because most β-sheets are at least slighty right-twisted.</p>
+		</div>
+	</div>
+
+	<div id="righttwist_content" style="display:none;" class="sscontent">
+		<div id="righttwist_interactiveContent" style="margin-right:20px;">
+			<h3>Right-Twisted Anti-Parallel β-Strands</h3>
+			<a onClick="setView('1BA7', '1')" style="cursor: pointer; cursor: hand;color:#9e247b;text-decoration:underline;">Reset View</a>
+
+			<div id="JmolDiv_righttwist" class="jmolContainer"></div>
+		</div>
+		<div id="righttwist_explainingText" class="explainingtext">
+			<p>Hardly any anti-parallel β-sheet is actually planar; most anti-parallel β-sheets have a twist which results from a relative right-handed rotation of 30° per residue.</p>
+			
+			<p>Definition of the twist sense (<a href="#Weatherford" onclick="reference(this.href);">Weatherford et al. 1979</a>) can sometimes seem a bit confusing, so let's have a look at the example for a right-twisted β-sheet here.</p>
+
+			<p>Firstly, the <span style="color:#abb592;"><b>individual β-strands</b></span> are right-twisted, i.e., looking down along the polypeptide chain, a clockwise rotation around the axis parallel to the β-strand is apparent.</p>
+			
+			<p>Similarly, multiple β-strands make up a <span style="color:#719070;"><b>right-twisted β-sheet</b></span>, i.e., looking down along an axis with the same orientation as the β-strands, a clockwise rotation of the <span style="color:#f79424;"><b>hydrogen bonds</b></span> around this axis is apparent.</p>
+			
+			<p>Confusingly, right-twisted β-sheets are sometimes ascribed a left twist; this occurs if a different reference axis is chosen that is orthogonal to the orientation of the β-strands: when looking along the direction of the hydrogen bonds, a <span style="color:#95c03d;"><b>left-handed interchain twist</b></span>, i.e., across the β-strands, is apparent.</p>
+			
+			<p>On average, the dihedral angles in heavily twisted anti-parallel β-sheets are close to φ&nbsp;≈&nbsp;-96° and ψ&nbsp;≈&nbsp;+158° (<a href="#Nesloney" onclick="reference(this.href);">Nesloney et al. 1996</a>).</p>
+		</div>
+	</div>
+
+	<div id="bulge_content" style="display:none;" class="sscontent">
+		<div id="bulge_interactiveContent" style="margin-right:20px;">
+			<h2>β-Bulges</h2>
+			<button class="button" onclick="bulge(-1)">←</button>
+			<span id="bulge_type"></span> <span id="PDB_ID_bulge"></span>
+			<button class="button" onclick="bulge(1)">→</button>
+			<br><span id="caption_bulge"></span>
+
+			<div id="JmolDiv_bulge" class="jmolContainer"></div>
+		</div>
+		<div id="bulge_explainingText" class="explainingtext">
+			<p>β-Bulges have been characterised well in the literature, so we shall quote a primary source here. As described in <a href="#Richardson" onclick="reference(this.href);">Richardson et al. 1978</a>, "a β bulge is a region between two consecutive β-type hydrogen bonds which includes two residues (positions 1 and 2) on one strand opposite a single residue (position x) on the other strand."</p>
+			<p>"Compared to regular β structure, a β bulge puts the usual alternation of side-chain direction out of register on one of the strands, introduces a slight bend in the β sheet, and locally accentuates the usual right-handed strand twist. Almost all β bulges are between antiparallel strands, usually between a narrow rather than a wide pair of hydrogen bonds."</p>
+
+			<p>And furthermore, "a β bulge is defined as a region between two consecutive β-type hydrogen bonds which includes two residues on one strand opposite a single residue on the other strand. [...] In more than 80% of the cases, β bulges occur between a closely spaced pair of hydrogen bonds rather than a widely spaced pair. β bulges are extremely rare in parallel β structure."</p>
+			
+			<p>"[...] an additional β strand cannot continue to bond past the bulge on the two-residue side, so that a bulge is always at either an edge or an end of the β sheet. The additional backbone length of the extra residue on the bulged strand is accommodated partly by bulging that strand up and out and partly by putting a slight bend in the β sheet. The distance between α carbons <i>n</i> and <i>n</i> + 3 on either end of the two-residue bulged side averages 8.0 Å."</p>
+		</div>
+	</div>
+
+	<div id="turns_content" style="display:none;" class="sscontent">
+		<div id="turns_interactiveContent" style="margin-right:20px;">
+			<h2>Turns</h2>
+
+			<div id="JmolDiv_turns" class="jmolContainer"></div>
+		</div>
+		<div id="turns_explainingText" class="explainingtext">
+			<p>Turns are structural segments that reverse the overall directionality of the main chain; "Turns comprise <i>n</i> consecutive residues (denoted <i>i</i> to <i>i</i>&nbsp;+&nbsp;<i>n</i>), in which the distance between C<sub>α</sub>(s) of residues <i>i</i> and <i>i</i>&nbsp;+&nbsp;<i>n</i> must be smaller than 7 Å [...]. [...] The restrictive distance between C<sub>α</sub>s applies a particular geometry to the backbone, thereby causing it to turn back on itself." (<a href="#deBrevern" onclick="reference(this.href);">de Brevern et al. 2016</a>)</p>
+			
+			<p>Turns are typically stabilised by intramolecular backbone-backbone <span style="color:#f79424;"><b>hydrogen bonds</b></span>, and there are turns that are characterised by hydrogen bonds between the amine hydrogen (N-H) of one residue and the carbonyl oxygen (C=O) of a residue <i>upstream</i> in the amino acid sequence, as well as turns with hydrogen bonds between the N-H of a residue and the C=O of a residue <i>downstream</i> in the amino acid sequence.</p>
+			
+			<table style="border-spacing: 0px;">
+			  <tr>
+			    <th style="padding-right: 25px;">Turns with C=O···H-N H-bonds:</th>
+			    <th>Turns with N-H···O=C H-bonds:</th>
+			  </tr>
+			  <tr>
+			    <td style="vertical-align: top;">
+				<ul>
+				<li>π-turns (<i>n</i> = 6)</li>
+				<li>α-turns (<i>n</i> = 5)</li>
+				<li>β-turns (<i>n</i> = 4)</li>
+				<li>γ-turns (<i>n</i> = 3)</li>
+				</ul>
+			    </td>
+			    <td style="vertical-align: top;">
+				<ul>
+				<li>ɛ-turns (<i>n</i> = 3)</li>
+				<li>δ-turns (<i>n</i> = 2)</li>
+				</ul>
+			    </td>
+			  </tr>
+			</table>
+
+			<p>For most types of turns, multiple classes and subclasses can be differentiated based on dihedral angles of the peptide bonds, i.e., backbone torsion angles of the amino acids involved.</p>
+			
+			<p>Turns that are longer, i.e., π-turns and α-turns in particular, may incorporate smaller internal turns. For example, there can be multiple overlapping α- or β-turns embedded in a π-turn, and α-turns can include tighter β-turns or a γ-turn (as is the case for α-turns of the II&#8209;α<sub>LS</sub> subclass).</p>
+			
+			<p>An example for this is shown: this π-turn comprises residues <span style="color:#9e247b;"><b><i>i</i> to <i>i</i>&nbsp;+&nbsp;<i>5</i></b></span> and includes two overlapping type I β-turns that span residues <span style="color:#abb592;"><b><i>i</i> to <i>i</i>&nbsp;+&nbsp;<i>3</i></b></span> and <span style="color:#95c03d;"><b><i>i + 1</i> to <i>i</i>&nbsp;+&nbsp;<i>4</i></b></span>, respectively.</p>
+		</div>
+	</div>
+
+	<div id="piturns_content" style="display:none;" class="sscontent">
+		<div id="piturns_interactiveContent" style="margin-right:20px;">
+			<h2>π-Turns</h2>
+			<button class="button" onclick="turn(-1, 'piturn')">←</button>
+			<span id="piturn_type"></span> <span id="PDB_ID_piturn"></span>
+			<button class="button" onclick="turn(1, 'piturn')">→</button>
+			<br><span id="caption_piturn"></span>
+
+			<div id="JmolDiv_piturn" class="jmolContainer"></div>
+		</div>
+		<div id="piturns_explainingText" class="explainingtext">
+			<p>π-Turns, which are often found at the C-terminus of α-helices, have originally been classified based on the conformation of the amino acid residue in position <i>i</i>&nbsp;+&nbsp;4 (<a href="#Rajashankar" onclick="reference(this.href);">Rajashankar et al. 1996</a>). However, an alternative classification has been proposed later that takes into account the dihedral angles of all residues that are in the middle of the turn (<a href="#Dasgupta" onclick="reference(this.href);">Dasgupta et al. 2008</a>).</p>
+			<p>This new classification distinguishes between non-hydrogen-bonded (NHB) and hydrogen-bonded (HB) π-turns (specifically referring to hydrogen bonds between the residues in positions <i>i</i> and <i>i</i>&nbsp;+&nbsp;5) and further separates the latter into turns that are isolated and those that are part of α-helix termini ('Schellman motif'); a further distinction is made for the latter based on whether a second hydrogen bond is present or not:</p>
+			<ul>
+			<li>Non-hydrogen-bonded π-turns (π-NHB)</li>
+			<li>Hydrogen-bonded π-turns (π-HB)
+				<ul>
+				<li>Isolated</li>
+				<li>Schellman (SCH) motif
+					<ul>
+					<li>SCH<sub>+β</sub></li>
+					<li>SCH<sub>-β</sub></li>
+					</ul>
+				</li>
+				</ul>
+			</li>
+			</ul>
+
+		</div>
+	</div>
+
+	<div id="alphaturns_content" style="display:none;" class="sscontent">
+		<div id="alphaturns_interactiveContent" style="margin-right:20px;">
+			<h2>α-Turns</h2>
+			<button class="button" onclick="turn(-1, 'alphaturn')">←</button>
+			<span id="alphaturn_type"></span> <span id="PDB_ID_alphaturn"></span>
+			<button class="button" onclick="turn(1, 'alphaturn')">→</button>
+			<br><span id="caption_alphaturn"></span>
+
+			<div id="JmolDiv_alphaturn" class="jmolContainer"></div>
+		</div>
+		<div id="alphaturns_explainingText" class="explainingtext">
+			<p>α-Turns comprise five amino acid residues; they introduce a chain reversal and are stabilised by a hydrogen bond between the first and last residue of the turn just like other turns.</p>
+			
+			<p>The structural definition of type I&#8209;α<sub>RS</sub> α-turns implies an ambiguity in the classification of secondary structure elements: the typical dihedral angles of these α-turns are similar to those of the basic repetitive unit of the right-handed α-helix. Similarly, α-turns of opposite handedness can be observed (type I&#8209;α<sub>LS</sub>), with dihedral angles that correspond to the basic repetitive unit of left-handed α-helices (<a href="#Pavone" onclick="reference(this.href);">Pavone et al. 1996</a>).</p>
+			
+			<p>α-Turns are relatively common; on average, two α-turns can be found per protein.</p>
+		</div>
+	</div>
+
+	<div id="betaturns_content" style="display:none;" class="sscontent">
+
+		<div id="betaturns_interactiveContent" style="margin-right:20px;">
+			<h2>β-Turns</h2>
+			<button class="button" onclick="turn(-1, 'betaturn')">←</button>
+			<span id="betaturn_type"></span> <span id="PDB_ID_betaturn"></span>
+			<button class="button" onclick="turn(1, 'betaturn')">→</button>
+			<br><span id="caption_betaturn"></span>
+
+			<div id="JmolDiv_betaturn" class="jmolContainer"></div>
+		</div>
+		<div id="betaturns_explainingText" class="explainingtext">
+			<p>From all types of turns, β-turns have received the most attention in the literature. Multiple types of β-turns have been described, including corresponding mirror images (denoted with an apostrophe, ').</p>
+		
+			<p>While looking through the types of β-turns, you might wonder why numbering suggests that some types are missing. This is because some types have been defined in the past, but later excluded due to various reasons:</p>
+			<ul>
+			<li>Type III (and III') has been excluded because it is basically a distortion of type I (I') and corresponds to the basic repetititve unit of 3<sub>10</sub>-helices.</li>
+			<li>Type V (and V') is rare and its definition is inaccurate.</li>
+			<li>Type VII, which is associated with a kink, is also rare and poorly defined.</li>
+			</ul>
+		</div>
+	</div>
+
+	<div id="gammaturns_content" style="display:none;" class="sscontent">
+		<div id="gammaturns_interactiveContent" style="margin-right:20px;">
+			<h2>γ-Turns</h2>
+			<button class="button" onclick="turn(-1, 'gammaturn')">←</button>
+			<span id="gammaturn_type"></span> <span id="PDB_ID_gammaturn"></span>
+			<button class="button" onclick="turn(1, 'gammaturn')">→</button>
+			<br><span id="caption_gammaturn"></span>
+
+			<div id="JmolDiv_gammaturn" class="jmolContainer"></div>
+		</div>
+		<div id="gammaturns_explainingText" class="explainingtext">
+			<p>γ-Turns are a tripeptide conformation of which only two types exist, the classic γ-turn and the inverse γ-turn (<a href="#Milner-White" onclick="reference(this.href);">Milner-White et al. 1988</a>).</p>
+			
+			<p>Both types of γ-turns are characterised by a seven-membered pseudo-cycle which is formed by the donor and acceptor atoms of an intramolecular hydrogen bond and the main chain atoms between them.</p>
+
+			<p>Note that only 6 member atoms of this pseudo-cycle are visible in the 3d model because the hydrogen of the amide group is not shown.</p>
+		</div>
+	</div>
+
+	<div id="epsilonturns_content" style="display:none;" class="sscontent">
+		<div id="epsilonturns_interactiveContent" style="margin-right:20px;">
+			<h2>ɛ-Turns</h2>
+			<button class="button" onclick="turn(-1, 'epsilonturn')">←</button>
+			<span id="epsilonturn_type"></span> <span id="PDB_ID_epsilonturn"></span>
+			<button class="button" onclick="turn(1, 'epsilonturn')">→</button>
+			<br><span id="caption_epsilonturn"></span>
+
+			<div id="JmolDiv_epsilonturn" class="jmolContainer"></div>
+		</div>
+		<div id="epsilonturns_explainingText" class="explainingtext">
+			<p> While ɛ-turns are formed by three residues just like γ-turns, they are structurally different as the direction of the stabilising hydrogen bond between the first and last residue is reversed, i.e., the donor amide group is upstream rather than downstream of the carbonyl acceptor group.</p>
+			
+			<p>The hydrogen bond in ɛ-turns hence forms a pseudo-cycle with eleven member atoms rather than seven. However, a γ-turn may actually be included in an ɛ-turn (<a href="#Toniolo_b" onclick="reference(this.href);">Toniolo et al. 2017</a>).</p>
+			
+			<p>ɛ-Turns have been classified in six different families and can be found in proteins in isolation or as part of hairpin motifs that consist of a pair of anti-parallel β-strands.</p>
+			
+			<p></p>
+		</div>
+	</div>
+
+	<div id="deltaturns_content" style="display:none;" class="sscontent">
+		<div id="deltaturns_interactiveContent" style="margin-right:20px;">
+			<h2>δ-Turns</h2>
+			<button class="button" onclick="turn(-1, 'deltaturn')">←</button>
+			<span id="deltaturn_type"></span> <span id="PDB_ID_deltaturn"></span>
+			<button class="button" onclick="turn(1, 'deltaturn')">→</button>
+			<br><span id="caption_deltaturn"></span>
+
+			<div id="JmolDiv_deltaturn" class="jmolContainer"></div>
+		</div>
+		<div id="deltaturns_explainingText" class="explainingtext">
+			<p>The shorter a turn gets the fewer options there are for main-chain reversal due to steric constraints.</p>
+
+			<p>However, even a δ-turn, a turn consisting of only two residues, is possible: for example, if the turn begins with a flexible residue such as a glycine (GLY) which is followed by a proline (PRO) in a semi-extended conformation, and the pair assumes the <i>cis</i>-conformation (i.e., the dihedral angle of the peptide bond between the two residues is close to zero, ω&nbsp;&#8776;&nbsp;0°), then sterical hindrance is not too large (<a href="#Toniolo_a" onclick="reference(this.href);">Toniolo et al. 2015</a>).</p>
+			
+			<p>Just like ɛ-turns, δ-turns can be stabilised by a hydrogen bond that has a direction opposite to hydrogen bonds found in longer turns.</p>
+		</div>
+	</div>
+	
+	<div id="coil_content" style="display:none;" class="sscontent">
+		<div id="coil_interactiveContent" style="margin-right:20px;">
+			<h2>Random Coil</h2>
+
+			<div id="JmolDiv_coil" class="jmolContainer"></div>
+		</div>
+		<div id="coil_explainingText" class="explainingtext">
+			<p>'Random coil' usually refers to any local polypeptide structure that lacks a well-defined or periodic pattern of hydrogen bonds and thus cannot be ascribed to any of the other classes of secondary structure. This typically includes loops that connect segments with defined secondary structure. However, the term is somewhat misleading because segments with random coil structure usually are neither coiled nor randomly structured.</p>
+			
+			<p>It is true that random coil segments are often more flexible and their dihedral angles don't follow canonic definitions but rather populate a distribution of values that give rise to an ensemble of conformations (<a href="#Smith" onclick="reference(this.href);">Smith et al. 1996</a>). This holds usually true for <span style="color:#abb592;"><b>terminal segments</b></span> at the ends of the polypeptide chain and <span style="color:#719070;"><b>solvent-exposed loops</b></span> at the protein surface.</p>
+			
+			<p>However, even random coil structure can be subjected to a certain level of classification and loops are not always necessarily highly flexible. For example, the <span style="color:#9e247b;"><b>omega loop</b></span> is a non-regular structure comprising six or more residues that lacks well-defined dihedral angles or a pattern of hydrogen bonding, but is often found to have limited flexibility. It can be identified by the fact that the first and last residue of the loop are in close vicinity to each other; they act as hinge points and gives rise to the loop's eponymous shape that resembles a Greek omega (<a href="#Papaleo" onclick="reference(this.href);">Papaleo et al. 2016</a>).</p>
+			
+		</div>
+	</div>
+</div>
+
+<h1>Defining Secondary Structure</h1>
+
+<p>When we talk about the secondary structure of a polypeptide, we basically refer to the local three-dimensional arrangement of its amino acid main chain, or backbone, into a series of linear segments that are stabilised by hydrogen bonds in well-defined, repeating patterns.</p>
+
+<p>Firstly, secondary structure can be defined based on gemometric criteria for the hydrogen bonds which are formed between amide (N-H) and carbonyl (C=O) groups in those segments: Typically, these criteria are as follows (<a href="#Taylor" onclick="reference(this.href);">Taylor et al. 1984</a>):
+<ul>
+<li>A H···O distance &lt; 2.5&nbsp;Å</li>
+<li>A N···O distance &lt; 3.5&nbsp;Å</li>
+<li>A N-H···O angle &gt; 110°</li>
+</ul>
+</p>
+
+<p>Secondly, secondary structure can be defined based on the more or less specific relative positions of backbone atoms. These can be described by means of torsion angles, or dihedral angles.</p>
+
+<h2>Dihedral Angles</h2>
+
+<p>A dihedral angle is the angle between two planes on either side of a bond that each span across a set of three atoms, where both planes include the two atoms that form the bond as well as the atom before or after this pair of atoms. Upon rotating both ends on either side of a bond in a molecule against each other, the dihedral angle for that bond changes.</p>
+
+<p>In proteins and peptides, three types of dihedral angles can be distinguished for:
+<ul>
+<li><b>The bond preceding a C<sub>α</sub> atom, φ (phi):</b> C<sup><i>i</i>&nbsp;-&nbsp;1</sup>—N<sup><i>i</i></sup>—C<sub>α</sub><sup><i>i</i></sup>—C<sup><i>i</i></sup></li>
+<li><b>The bond following a C<sub>α</sub> atom, ψ (psi):</b> N<sup><i>i</i></sup>—C<sub>α</sub><sup><i>i</i></sup>—C<sup><i>i</i></sup>—N<sup><i>i</i>&nbsp;+&nbsp;1</sup></li>
+<li><b>The peptide bond, ω (omega):</b> C<sub>α</sub><sup><i>i</i></sup>—C<sup><i>i</i></sup>—N<sup><i>i</i>&nbsp;+&nbsp;1</sup>—C<sub>α</sub><sup><i>i</i>&nbsp;+&nbsp;1</sup></li>
+</ul>
+where <i>i</i> depicts the number of a residue (and <i>i</i>&nbsp;+&nbsp;1 is the subsequent residue in the amino acid sequence), the two planes span the first three atoms and the last three atoms, respectively, and rotation around the bond in the middle affects the corresponding dihedral angle.
+
+</p>
+
+<p>The peptide bonds in polypeptides have a partial double-bond character due to the delocalisation of the lone pair of electrons on the nitrogen atom. Therefore, peptide bonds almost exclusively assume a <i>trans</i> configuration, and the corresponding dihedral angle, ω, is virtually always close to 180°.</p>
+
+<p>As opposed to the torsion angle of the peptide bond, φ and ψ have more degrees of freedom. However, <a href="#Ramachandran" onclick="reference(this.href);">G. N. Ramachandran</a> showed in 1963 that not just any theoretically possible combination of φ and ψ is found in proteins but dihedral angles are subject to certain constraints (which were later refined, e.g., see <a href="#Lovell" onclick="reference(this.href);">Lovell et al. 2003</a>) and can be classified accordingly:
+<ul>
+<li><b>Allowed combinations</b> that won't result in steric clashes between atoms</li>
+<li><b>Favoured combinations</b> that allow for the formation of stabilising backbone hydrogen bonds</li>
+</ul>
+
+These constraints are the reason why secondary structure can be classified into certain reoccuring elements that are characterised by sets of specific (within margins) dihedral angles and give rise to specific patterns of hydrogen bonding.</p>
+
+<h2>Interactive Widget</h2>
+
+<p>Now, in case the above isn't very tangible to you, we give you a little playground below for a better understanding of dihedral angles and how they affect secondary structure. For information about what you can do here, please refer to the short how-to next to it.</p>
+
+<!-- <p>Note that, although peptide bonds virtually always have an angle ω of close to 180°, you are allowed to change it in this model.</p> -->
+
+<div id="playground">
+	<div id="JmolDiv_intro" style="width:50vmin; height:30vmin;" class="playgroundContent"></div>
+
+	<div class="playgroundContent" style="width:28vmin;">
+		<label for="sequence">Sequence:</label>
+		<input onpaste="return false;" type="text" id="sequence" name="sequence" required maxlength="10" size="10" value="chirascan"/>
+
+		<div>Default φ:<input type="range" class="slider" min="-180" max="180" value="-45" id="newPhiSlider"><span id="newPhiVal"></span>° <button type="button" id="phiButton" onclick="buttonClick(this.id)" disabled>Apply to Selection</button></div>
+		<div>Default ψ:<input type="range" class="slider" min="-180" max="180" value="-60" id="newPsiSlider"><span id="newPsiVal"></span>° <button type="button" id="psiButton" onclick="buttonClick(this.id)" disabled>Apply to Selection</button></div>
+		<div style="display:none;"> <!-- For now, hide slider for omega -->
+		<div>Default ω:<input type="range" class="slider" min="-180" max="180" value="180" id="newOmegaSlider"><span id="newOmegaVal"></span>° <button type="button" id="omegaButton" onclick="buttonClick(this.id)" disabled>Apply to Selection</button></div>
+		</div>
+
+		<div id="selectedAngles" style="display:none;">
+			<div><label for="selectedPhi">Selected φ:</label><input type="range" class="slider" min="-180" max="180" value="180" id="selectedPhiSlider"><span id="selectedPhiVal"></span>°</div>
+			<div><label for="selectedPsi">Selected ψ:</label><input type="range" class="slider" min="-180" max="180" value="180" id="selectedPsiSlider"><span id="selectedPsiVal"></span>°</div>
+		</div>
+		<div id="selectedOmegaAngle" style="display:none;"><label for="selectedOmega">Selected ω:</label><input type="range" class="slider" min="-180" max="180" value="180" id="selectedOmegaSlider"><span id="selectedOmegaVal"></span>°</div>
+
+		<div>
+			Planes:
+			<input type="radio" id="noPlanes" name="anglePlanes" value="hide" onchange="anglePlanesChange()" checked="checked">None
+			<input type="radio" id="phiPlanes" name="anglePlanes" value="phi" onchange="anglePlanesChange()">φ
+			<input type="radio" id="psiPlanes" name="anglePlanes" value="psi" onchange="anglePlanesChange()">ψ
+			<input type="radio" id="omegaPlanes" name="anglePlanes" value="omega" onchange="anglePlanesChange()">ω
+		</div>
+
+		<div>
+			Bonds:
+			<input type="radio" id="noBonds" name="angleBonds" value="hide" onchange="angleBondsChange()" checked="checked">None
+			<input type="radio" id="phiBonds" name="angleBonds" value="phi" onchange="angleBondsChange()">φ
+			<input type="radio" id="psiBonds" name="angleBonds" value="psi" onchange="angleBondsChange()">ψ
+			<input type="radio" id="omegaBonds" name="angleBonds" value="omega" onchange="angleBondsChange()">ω
+		</div>
+
+		<div>
+			Style:
+			<input type="radio" id="ballstick" name="style" value="ballstick" onchange="styleChange()" checked="checked">Balls &amp; Sticks
+			<input type="radio" id="cartoon" name="style" value="cartoon" onchange="styleChange()">Cartoon
+		</div>
+
+		<div>
+			Clashes:
+			<input type="radio" id="clashesFalse" name="clashes" value="false" onchange="clashesChange()" checked="checked">Hide
+			<input type="radio" id="clashesTrue" name="clashes" value="true" onchange="clashesChange()">Show
+		</div>
+		
+		<div>
+			Extra labels in Ramachandran plot:
+			<input type="radio" id="labelsFalse" name="labels" value="false" onchange="labelsChange()" checked="checked">Hide
+			<input type="radio" id="labelsTrue" name="labels" value="true" onchange="labelsChange()">Show
+		</div>
+	</div>
+	
+	<div id="ramachandran_div" class="playgroundContent">
+		<canvas id="bgcanvas"></canvas>
+		<canvas id="labelscanvas"></canvas>
+		<canvas id="canvas"></canvas>
+	</div>
+
+	<div class="playgroundContent" style="width:67vmin;">
+		<button type="button" class="collapsible">View<span style="float:right;">+</span></button>
+		<div class="content">
+			<ul>
+			<li><b>Pan:</b> Press Ctrl, click the right mouse button and drag.</li>
+			<li><b>Rotate:</b> Click the left mouse button and drag.</li>
+			<li><b>Zoom:</b> Clcik the middle mouse button and drag vertically, or use mouse wheel.</li>
+			</ul>
+		</div>
+		<button type="button" class="collapsible">Peptide Sequence<span style="float:right;">+</span></button>
+		<div class="content">
+			<ul>
+			<li><b>Add residues:</b> Type in one of the 20 single-letter amino acid codes.</li>
+			<li><b>Remove single residues:</b> Use backspace or delete key to remove an individual amino acid.</li>
+			<li><b>Remove multiple residuess:</b> Select a part of the sequence, then hit backspace or delete key.</li>
+			<li><b>Move residuess:</b> Select a part of the sequence, then drag &amp; drop to the desired location.</li>
+			<li><b>Replace residuess:</b> Select a part of the sequence, then enter the single-letter code of an amino acid to replace with.</li>
+			</ul>
+		</div>
+		<button type="button" class="collapsible">Dihedral Angles<span style="float:right;">+</span></button>
+		<div class="content">
+			<ul>
+			<li><b>Default angles:</b> Use the Default sliders to change which dihedral angles any newly added amino acid will have.</li>
+			<li><b>Change φ:</b> Select a single residue in the sequence, then use the Selected φ slider to change the residue's phi angle.</li>
+			<li><b>Change ψ:</b> Select a single residue in the sequence, then use the Selected ψ slider to change the residue's psi angle.</li>
+			<div style="display:none;"> <!-- For now, hide info for slider for omega -->
+			<li><b>Change ω:</b> Select two residues in the sequence, then use the Selected ω slider to change ω for the corresponding peptide bond.</li>
+			</div>
+			<li><b>Change angles for multiple amino acids:</b> Select a part of the sequence, then click one of the Apply to Selection buttons to change the dihedral angles of all the selected amino acids to the default.</li>
+			</ul>
+		</div>
+		<button type="button" class="collapsible">Display<span style="float:right;">+</span></button>
+		<div class="content">
+			<ul>
+			<li><b>Planes:</b> Chose one of the options to display the planes for one of the three types of dihedral angles.</li>
+			<li><b>Bonds:</b> Chose one of the options to highlight the bonds for one of the three types of dihedral angles.</li>
+			<li><b>Style:</b> Chose one of the options to either show atoms in detail or a cartoon representation that depicts secondary structure.</li>
+			<li><b>Clashes:</b> Visualise steric clashes; for clarity, only clashes between atoms of consecutive amino acids are considered.</li>
+			</ul>
+		</div>
+		<button type="button" class="collapsible">Ramachandran Plot<span style="float:right;">+</span></button>
+		<div class="content">
+			<ul>
+			<li><b>Drag:</b> Drag any point in the Ramachandran plot to change corresponding dihedral angles (this may be a bit slow as the 3d model is being recalculated accordingly). When dragging a point in the plot, the 3d model is automatically realigned.</li>
+			<li><b>Similar angles:</b> There is one point for each residue in the plot; if multiple points have similar values, they are grouped together. Points corresponding to individual residues are labeled with the corresponding one-letter amino acid code, whereas grouped residues are labelled with a number indicating how many residues are in the group. To separate a residue from the group, select the residue in the sequence and change one of its dihedral angles.</li>
+			<li><b>Extra labels:</b> Show additional labels in the Ramamchandran plot that indicate typical dihedral angles for a few selected secondary structure elements.</li>
+			</ul>
+		</div>
+	</div>
+</div>
+
+<h1>References</h1>
+
+<ol>
+<li><span id="Barlow">Barlow, D. J., & Thornton, J. M. (1988). Helix geometry in proteins. Journal of Molecular Biology, 201(3), 601–619. https://doi.org/10.1016/0022-2836(88)90641-9</span></li>
+<li><span id="deBrevern">de Brevern, A. G. (2016). Extension of the classical classification of β-turns. Scientific Reports, 6(1). https://doi.org/10.1038/srep33191</span></li>
+<li><span id="Dasgupta">Dasgupta, B., & Chakrabarti, P. (2008). pi-Turns: types, systematics and the context of their occurrence in protein structures. BMC Structural Biology, 8(1), 39. https://doi.org/10.1186/1472-6807-8-39</span></li>
+<li><span id="Lovell">Lovell, S. C., Davis, I. W., Arendall, W. B., III, de Bakker, P. I. W., Word, J. M., Prisant, M. G., Richardson, J. S., & Richardson, D. C. (2003). Structure validation by Cα geometry: ϕ,ψ and Cβ deviation. Proteins, 50(3), 437–450. https://doi.org/10.1002/prot.10286</span></li>
+<li><span id="Maccallum">Maccallum, P. H., Poet, R., & James Milner-White, E. (1995). Coulombic attractions between partially chargedmain-chain atoms stabilise the right-handed twist found in most β-strands. Journal of Molecular Biology, 248(2), 374–384. https://doi.org/10.1016/s0022-2836(95)80057-3</span></li>
+<li><span id="Martin">Martin, J., Letellier, G., Marin, A., Taly, J.-F., de Brevern, A. G., & Gibrat, J.-F. (2005). Protein secondary structure assignment revisited: a detailed analysis of different assignment methods. BMC Structural Biology, 5(1). https://doi.org/10.1186/1472-6807-5-17</span></li>
+<li><span id="Milner-White">Milner-White, E. J., Ross, B. M., Ismail, R., Belhadj-Mostefa, K., & Poet, R. (1988). One type of gamma-turn, rather than the other gives rise to chain-reversal in proteins. Journal of Molecular Biology, 204(3), 777–782. https://doi.org/10.1016/0022-2836(88)90368-3</span></li>
+<li><span id="Nesloney">Nesloney, C. L., & Kelly, J. W. (1996). Progress towards understanding β-sheet structure. Bioorganic & Medicinal Chemistry, 4(6), 739–766. https://doi.org/10.1016/0968-0896(96)00051-x</span></li>
+<li><span id="Papaleo">Papaleo, E., Saladino, G., Lambrughi, M., Lindorff-Larsen, K., Gervasio, F. L., & Nussinov, R. (2016). The role of protein loops and linkers in conformational dynamics and allostery. Chemical Reviews, 116(11), 6391–6423. https://doi.org/10.1021/acs.chemrev.5b00623</span></li>
+<li><span id="Pavone">Pavone, V., Gaeta, G., Lombardi, A., Nastri, F., Maglio, O., Isernia, C., & Saviano, M. (1996). Discovering protein secondary structures: Classification and description of isolated α-turns. Biopolymers, 38(6), 705–721. https://doi.org/10.1002/(sici)1097-0282(199606)38:6<705::aid-bip3>3.0.co;2-v</span></li>
+<li><span id="Rajashankar">Rajashankar, K. R., & Ramakumar, S. (1996). π‐Turns in proteins and peptides: Classification, conformation, occurrence, hydration and sequence. Protein Science: A Publication of the Protein Society, 5(5), 932–946. https://doi.org/10.1002/pro.5560050515</span></li>
+<li><span id="Ranganathan">Ranganathan, S., Izotov, D., Kraka, E., & Cremer, D. (2009). Description and recognition of regular and distorted secondary structures in proteins using the automated protein structure analysis method. Proteins, 76(2), 418–438. https://doi.org/10.1002/prot.22357</span></li>
+<li><span id="Ramachandran">Ramachandran, G. N., Ramakrishnan, C., & Sasisekharan, V. (1963). Stereochemistry of polypeptide chain configurations. Journal of Molecular Biology, 7(1), 95–99. https://doi.org/10.1016/s0022-2836(63)80023-6</span></li>
+<li><span id="Richardson">Richardson, J. S., Getzoff, E. D., &amp; Richardson, D. C. (1978). The beta bulge: a common small unit of nonrepetitive protein structure. Proceedings of the National Academy of Sciences of the United States of America, 75(6), 2574–2578. https://doi.org/10.1073/pnas.75.6.2574</span></li>
+<li><span id="Riek">Riek, R. P., & Graham, R. M. (2011). The elusive π-helix. Journal of Structural Biology, 173(1), 153–160. https://doi.org/10.1016/j.jsb.2010.09.001</span></li>
+<li><span id="Shamovsky">Shamovsky, I. L., Ross, G. M., & Riopelle, R. J. (2000). Theoretical Studies on the Origin of β-sheet Twisting. The Journal of Physical Chemistry. B, 104(47), 11296–11307. https://doi.org/10.1021/jp002590t</span></li>
+<li><span id="Smith">Smith, L. J., Fiebig, K. M., Schwalbe, H., & Dobson, C. M. (1996). The concept of a random coil: Residual structure in peptides and denatured proteins. Folding & Design, 1(5), R95–R106. https://doi.org/10.1016/s1359-0278(96)00046-6</span></li>
+<li><span id="Taylor">Taylor, R., Kennard, O., & Versichel, W. (1984). The geometry of the N–H...O=C hydrogen bond. 3. Hydrogen-bond distances and angles. Acta Crystallographica. Section B, Structural Science, 40(3), 280–288. https://doi.org/10.1107/s010876818400210x</span></li>
+<li><span id="Toniolo_a">Toniolo, C., Crisma, M., Moretto, A., Peggion, C., Formaggio, F., Alemán, C., Cativiela, C., Ramakrishnan, C., & Balaram, P. (2015). Peptide δ‐turn: Literature survey and recent progress. Chemistry (Weinheim an Der Bergstrasse, Germany), 21(40), 13866–13877. https://doi.org/10.1002/chem.201501467</span></li>
+<li><span id="Toniolo_b">Toniolo, C., Crisma, M., Formaggio, F., Alemán, C., Ramakrishnan, C., Kalmankar, N., & Balaram, P. (2017). Intramolecular backbone···backbone hydrogen bonds in polypeptide conformations. The other way around: ɛ‐turn. Biopolymers, 108(1). https://doi.org/10.1002/bip.22911</span></li>
+<li><span id="Weatherford">Weatherford, D. W., & Salemme, F. R. (1979). Conformations of twisted parallel beta-sheets and the origin of chirality in protein structures. Proceedings of the National Academy of Sciences of the United States of America, 76(1), 19–23. https://doi.org/10.1073/pnas.76.1.19</span></li>
+</ol>
+
+<script type="text/javascript" src='moleculeLoaded.js'></script>
+<script type="text/javascript" src='subviews.js'></script>
+<script type="text/javascript" src='controls.js'></script>
+<script type="text/javascript" src='builder.js'></script>
+<script type="text/javascript" src='ramachandran.js'></script>
+
+<script>
+// Handle reference links behavior
+function reference(anchor) {
+	var spanID = anchor.split("#")[1];
+	var span = document.getElementById(spanID);
+	blinkOn(span);
+}
+
+function blinkOn(span) {
+    span.counter = 0;
+    span.defColor=span.style.color;
+    span.alertTimerId =setInterval("blinkOnce('"+span.id+"')", 100 );
+}
+
+function blinkOnce(spanID) {
+    var span=document.getElementById(spanID)
+    span.counter++;
+    if(span.style.opacity == "1"){
+        span.style.opacity = "0.5";}
+     else{
+        span.style.opacity = "1";
+     }
+    if(span.counter > 10){
+        blinkOff(span);
+    }   
+}
+
+function blinkOff(span) {
+   clearInterval(span.alertTimerId);    
+   span.style.opacity = "1";
+}
+
+// Handle collapsibles behavior
+var coll = document.getElementsByClassName("collapsible");
+var i;
+
+for (i = 0; i < coll.length; i++) {
+  coll[i].addEventListener("click", function() {
+    this.classList.toggle("active");
+    var content = this.nextElementSibling;
+    var symbol = this.lastChild;
+    if (content.style.display === "block") {
+      content.style.display = "none";
+    } else {
+      content.style.display = "block";
+    }
+    if (symbol.innerHTML === "-") {
+      symbol.innerHTML = "+";
+    } else {
+      symbol.innerHTML = "-";
+    }
+  });
+}
+
+// Handle hoverables behavior
+var coll = document.getElementsByClassName("hoverable");
+var i;
+
+for (i = 0; i < coll.length; i++) {
+  coll[i].addEventListener("mouseover", function() {
+    var coll = document.getElementsByClassName("hoverable");
+    for (i = 0; i < coll.length; i++) {
+	if (coll[i] != this) {
+		coll[i].dataset.active = false;
+	}
+    }
+    if (this.dataset.active == "false") {
+	    var toggle, residues, chains, currentSelection;
+	    var commands = "";
+	    switch (this.id) {
+		case "helices_text1":
+			commands += '!exit;reset;set perspectiveDepth off;zoom 250;';
+			commands += 'select all;trace only;trace 0.2;color trace [158,36,123];' // Show trace only
+			commands += 'select (*.CB or *.CA);wireframe on;wireframe reset;color TRANSLUCENT 1;'; // Show sidechains
+			commands += 'color (*.CA) [158,36,123];color (*.CB) [149, 192, 61];'; // Color sidechains
+			commands += 'select all;hbonds off;' // Hide hydrogen bonds
+			commands += 'dipole bonds off;'; // Hide dipoles
+			commands += 'script helicesScript.txt;'; // Show axis and axis arrow
+			Jmol.script(jmol_helices, commands);
+			toggle = document.getElementById("helices_backbone_toggle");
+			toggle.innerHTML = "Show backbone atoms";
+			toggle.dataset.backbone = "hidden";
+			toggle = document.getElementById("helices_sidechains_toggle");
+			toggle.innerHTML = "Hide sidechains";
+			toggle.dataset.sidechains = "visible";
+			toggle = document.getElementById("helices_hbonds_toggle");
+			toggle.innerHTML = "Show h-bonds";
+			toggle.dataset.hbonds = "hidden";
+			toggle = document.getElementById("helices_axis_toggle");
+			toggle.innerHTML = "Hide helical axis";
+			toggle.dataset.axis = "visible";
+			toggle = document.getElementById("helices_termini_toggle");
+			toggle.innerHTML = "Show termini &amp; caps";
+			toggle.dataset.termini = "hidden";
+			toggle = document.getElementById("helices_dipoles_toggle");
+			toggle.innerHTML = "Show dipole moments";
+			toggle.dataset.termini = "hidden";
+			
+		break;
+		case "helices_text2":
+			commands += '!exit;reset;set perspectiveDepth on;zoom 150;rotate y -45;rotate z 35;';
+			commands += 'select all;trace only;trace 0.2;color trace [158,36,123];' // Show trace only
+			commands += 'select (sidechains or *.CA);wireframe off;'; // Hide sidechains
+			commands += 'delete $ line1;delete $ line2;'; // Hide axis and axis arrow
+			commands += 'select backbone;hbonds calculate;set hbondsBackbone TRUE;hbonds on;color hbonds [247,148,36];hbonds 0.1;'; // Show hydrogen bonds
+			commands += 'color trace [158,36,123];'; // Color trace
+			commands += 'select (2-5);color trace [0, 90, 157];select (19-22);color trace [181, 23, 38];'; // Color termini
+			commands += 'select (2);color trace blue;select (22);color trace red;'; // Color caps
+			commands += 'dipole bonds off;'; // Hide dipoles
+			Jmol.script(jmol_helices, commands);
+			toggle = document.getElementById("helices_backbone_toggle");
+			toggle.innerHTML = "Show backbone atoms";
+			toggle.dataset.backbone = "hidden";
+			toggle = document.getElementById("helices_sidechains_toggle");
+			toggle.innerHTML = "Show sidechains";
+			toggle.dataset.sidechains = "hidden";
+			toggle = document.getElementById("helices_hbonds_toggle");
+			toggle.innerHTML = "Hide h-bonds";
+			toggle.dataset.hbonds = "visible";
+			toggle = document.getElementById("helices_axis_toggle");
+			toggle.innerHTML = "Show helical axis";
+			toggle.dataset.axis = "hidden";
+			toggle = document.getElementById("helices_termini_toggle");
+			toggle.innerHTML = "Hide termini &amp; caps";
+			toggle.dataset.termini = "visible";
+			toggle = document.getElementById("helices_dipoles_toggle");
+			toggle.innerHTML = "Show dipole moments";
+			toggle.dataset.dipoles = "hidden";
+		break;
+		case "helices_text3":
+			commands += '!exit;reset;set perspectiveDepth on;zoom 100;rotate x 90;rotate y 135;';
+			commands += 'delete $ line1;delete $ line2;'; // Hide axis and axis arrow
+			commands += 'select all;hbonds off;'; // Hide hydrogen bonds
+			commands += 'select all;color atoms cpk;wireframe on;wireframe reset;select all;color atoms TRANSLUCENT 0.75;'; // Show backbone
+			commands += 'dipole calculate bonds;dipole bonds on;dipole WIDTH 0.2 CROSS OFFSET 1.0 OFFSETSIDE 0.6;set dipoleScale 2;color dipole black;'; // Show dipoles
+			commands += 'trace off;'; // Hide trace
+			commands += 'select (sidechains or *.CA);wireframe off;'; // Hide sidechains
+			
+			commands += 'select {atomName=HN and resno=2};label \"<color black>δ<sup>+</sup></color>\";';
+			commands += 'select {atomName=O and resno=22};label \"<color black>δ<sup>-</sup></color>\";';
+			
+			Jmol.script(jmol_helices, commands);
+			toggle = document.getElementById("helices_backbone_toggle");
+			toggle.innerHTML = "Hide backbone atoms";
+			toggle.dataset.backbone = "visible";
+			toggle = document.getElementById("helices_sidechains_toggle");
+			toggle.innerHTML = "Show sidechains";
+			toggle.dataset.sidechains = "hidden";
+			toggle = document.getElementById("helices_hbonds_toggle");
+			toggle.innerHTML = "Show h-bonds";
+			toggle.dataset.hbonds = "hidden";
+			toggle = document.getElementById("helices_axis_toggle");
+			toggle.innerHTML = "Show helical axis";
+			toggle.dataset.axis = "hidden";
+			toggle = document.getElementById("helices_termini_toggle");
+			toggle.innerHTML = "Show termini &amp; caps";
+			toggle.dataset.termini = "hidden";
+			toggle = document.getElementById("helices_dipoles_toggle");
+			toggle.innerHTML = "Hide dipole moments";
+			toggle.dataset.dipoles = "visible";
+		break;
+		case "strands_text1":
+			residues = getValueByKey(moleculeProps, "2TRX")["residues"];
+			chains = getValueByKey(moleculeProps, "2TRX")["chains"];
+			commands += '!exit;';
+			commands += 'select (sidechains or *.CA);wireframe off;'; // Hide sidechains
+			currentSelection = "(" + getSelectionString(residues, chains) + ")";
+			commands += 'select {' + currentSelection + ' and backbone};hbonds calculate;set hbondsBackbone TRUE;hbonds on;color hbonds [247,148,36];hbonds 0.1;'; // Show hydrogen bonds
+			commands += getAlignmentCommands(jmol_strands, residues[2][0], residues[2][1], chains[0][0], chains[0][1]);
+			commands += 'delete $ parallel; delete $ antiparallel; color cartoon [158,36,123];';
+			commands += 'zoom 200;rotate x -30;translate y -12;rotate spin y 5;';
+			Jmol.script(jmol_strands, commands);
+		break;
+		case "strands_text2":
+			residues = getValueByKey(moleculeProps, "2TRX")["residues"];
+			chains = getValueByKey(moleculeProps, "2TRX")["chains"];
+			commands += '!exit;';
+			commands += 'select (sidechains or *.CA);wireframe off;'; // Hide sidechains
+			commands += 'select all;hbonds off;'; // Hide hydrogen bonds
+			commands += getAlignmentCommands(jmol_strands, residues[2][0], residues[2][1], chains[0][0], chains[0][1]);
+			commands += 'zoom 200;rotate x -30;translate y -12;rotate spin y 5;';
+			commands += 'script strandsScript.txt;'; // Indicate parallel and anti-parallel strands alternatingly
+			Jmol.script(jmol_strands, commands);
+		break;
+		case "strands_text3":
+			residues = getValueByKey(moleculeProps, "2TRX")["residues"];
+			chains = getValueByKey(moleculeProps, "2TRX")["chains"];
+			commands += '!exit;';
+			commands += 'select all;hbonds off;'; // Hide hydrogen bonds
+			currentSelection = "(" + getSelectionString(residues, chains) + ")";
+			commands += 'select {' + currentSelection + ' and (*.CB or *.CA)};color (*.CB) [149, 192, 61];wireframe on;wireframe reset;'; // Show sidechains
+			commands += getAlignmentCommands(jmol_strands, residues[2][0], residues[2][1], chains[0][0], chains[0][1]);
+			commands += 'delete $ parallel; delete $ antiparallel; color cartoon [158,36,123];';
+			commands += 'zoom 200;rotate x -30;translate y -12;rotate spin y 5;';
+			Jmol.script(jmol_strands, commands);
+		break;
+	    }
+	    this.dataset.active = true;
+    }
+  });
+}
+</script>
+
+<script>
+// Handle selection of secondary structure element in overview
+var coll = document.getElementsByClassName("clickeable");
+var i;
+
+for (i = 0; i < coll.length; i++) {
+  coll[i].addEventListener("click", function(evt) {
+	evt.stopPropagation();
+	var divID = evt.target.id;
+	// First, hide all content
+	var coll = document.getElementsByClassName("sscontent");
+	var i;
+	for (i = 0; i < coll.length; i++) {
+		if (coll[i].id != divID) {
+			coll[i].style.display = 'none';
+		}
+	}
+	if (document.getElementById(divID + "_content")) {
+		if (divID != 'mainBox') {
+			document.getElementById(divID + "_content").style.display = 'flex';
+			if (contentLoaded[divID] == false) {
+				let residues, chanis;
+				switch(divID) {
+					case "helices":
+						$('#JmolDiv_helices').html( Jmol.getAppletHtml(jmol_helices, JmolInfo) );
+						Jmol.script(jmol_helices, 'set disablePopupMenu TRUE;frank off;load idealalpha.pdb;trace only;trace 0.2;hide (*.HA);set perspectiveDepth off;zoom 250;select (*.CB or *.CA);color (*.CB) [149, 192, 61];wireframe on;wireframe reset;color [158,36,123];color (*.CB) [149, 192, 61];script helicesScript.txt;');
+					break;
+					case "strands":
+						residues = getValueByKey(moleculeProps, "2TRX")["residues"];
+						chains = getValueByKey(moleculeProps, "2TRX")["chains"];
+						var currentSelection = "(" + getSelectionString(residues, chains) + ")";
+						$('#JmolDiv_strands').html( Jmol.getAppletHtml(jmol_strands, JmolInfo) );
+						Jmol.script(jmol_strands, 'set disablePopupMenu TRUE;frank off;load 2trx.pdb;cartoon only;set cartoonFancy on;color [158,36,123];select {' + currentSelection + ' and (*.CB or *.CA)};color (*.CB) [149, 192, 61];wireframe on;wireframe reset;select {' + currentSelection + ' and backbone};hbonds calculate;set hbondsBackbone TRUE;hbonds on;color hbonds [247,148,36];hbonds 0.1;');
+					break;
+					case "turns":
+						$('#JmolDiv_turns').html( Jmol.getAppletHtml(jmol_turns, JmolInfo) );
+						Jmol.script(jmol_turns, 'set disablePopupMenu TRUE;frank off;load 1arb.pdb;cartoon only;set cartoonFancy on;color [158,36,123];');
+					break;
+					case "regular":
+						$('#JmolDiv_regular').html( Jmol.getAppletHtml(jmol_regular, JmolInfo) );
+						Jmol.script(jmol_regular, 'set disablePopupMenu TRUE;frank off;set perspectiveDepth off;load 6ec0.pdb;hide chain=B;cartoon only;set cartoonFancy on;color [158,36,123];');
+					break;
+					case "distorted":
+						$('#JmolDiv_distorted').html( Jmol.getAppletHtml(jmol_distorted, JmolInfo) );
+						distorted(0);
+					break;
+					case "threeten":
+						$('#JmolDiv_310').html( Jmol.getAppletHtml(jmol_310, JmolInfo) );
+						Jmol.script(jmol_310, 'set disablePopupMenu TRUE;frank off;set perspectiveDepth off;load 1gpb.pdb;cartoon only;set cartoonFancy on;color [158,36,123];');
+					break;
+					case "pihelix":
+						$('#JmolDiv_pi').html( Jmol.getAppletHtml(jmol_pi, JmolInfo) );
+						Jmol.script(jmol_pi, 'set disablePopupMenu TRUE;frank off;set perspectiveDepth off;load 2qd1.pdb;cartoon only;set cartoonFancy on;color [158,36,123];');
+					break;
+					case "parallel":
+						$('#JmolDiv_parallel').html( Jmol.getAppletHtml(jmol_parallel, JmolInfo) );
+						Jmol.script(jmol_parallel, 'set disablePopupMenu FALSE;frank off;set perspectiveDepth off;load 2beg.pdb;cartoon only;set cartoonFancy on;color [158,36,123];');
+					break;
+					case "lefttwist":
+						$('#JmolDiv_lefttwist').html( Jmol.getAppletHtml(jmol_lefttwist, JmolInfo) );
+						Jmol.script(jmol_lefttwist, 'set disablePopupMenu TRUE;frank off;set perspectiveDepth off;load 1ofs.pdb;cartoon only;set cartoonFancy on;color [158,36,123];');
+					break;
+					case "relaxed":
+						$('#JmolDiv_relaxed').html( Jmol.getAppletHtml(jmol_relaxed, JmolInfo) );
+						Jmol.script(jmol_relaxed, 'set disablePopupMenu TRUE;frank off;set perspectiveDepth off;load 2yxf.pdb;cartoon only;set cartoonFancy on;color [158,36,123];');
+					break;
+					case "righttwist":
+						$('#JmolDiv_righttwist').html( Jmol.getAppletHtml(jmol_righttwist, JmolInfo) );
+						Jmol.script(jmol_righttwist, 'set disablePopupMenu TRUE;frank off;set perspectiveDepth off;load 1ba7.pdb;cartoon only;set cartoonFancy on;color [158,36,123];');
+					break;
+					case "bulge":
+						$('#JmolDiv_bulge').html( Jmol.getAppletHtml(jmol_bulge, JmolInfo) );
+						bulge(0);
+					break;
+					case "piturns":
+						$('#JmolDiv_piturn').html( Jmol.getAppletHtml(jmol_piturn, JmolInfo) );
+						turn(0, 'piturn');
+					break;
+					case "alphaturns":
+						$('#JmolDiv_alphaturn').html( Jmol.getAppletHtml(jmol_alphaturn, JmolInfo) );
+						turn(0, 'alphaturn');
+					break;
+					case "betaturns":
+						$('#JmolDiv_betaturn').html( Jmol.getAppletHtml(jmol_betaturn, JmolInfo) );
+						turn(0, 'betaturn');
+					break;
+					case "gammaturns":
+						$('#JmolDiv_gammaturn').html( Jmol.getAppletHtml(jmol_gammaturn, JmolInfo) );
+						turn(0, 'gammaturn');
+					break;
+					case "epsilonturns":
+						$('#JmolDiv_epsilonturn').html( Jmol.getAppletHtml(jmol_epsilonturn, JmolInfo) );
+						turn(0, 'epsilonturn');
+					break;
+					case "deltaturns":
+						$('#JmolDiv_deltaturn').html( Jmol.getAppletHtml(jmol_deltaturn, JmolInfo) );
+						turn(0, 'deltaturn');
+					break;
+					case "coil":
+						$('#JmolDiv_coil').html( Jmol.getAppletHtml(jmol_coil, JmolInfo) );
+						Jmol.script(jmol_coil, 'set disablePopupMenu TRUE;frank off;set perspectiveDepth off;load 1lri.pdb;hide chain=B;cartoon only;set cartoonFancy on;color [158,36,123];');
+					break;
+				}
+				contentLoaded[divID] = true;
+			} else {
+				switch(divID) {
+					case "helices":
+						setView('idealalpha', '0');
+					break;
+					case "strands":
+						setView('2TRX', '0');
+					break;
+					case "turns":
+						setView('1ARB', '0');
+					break;
+					case "pihelix":
+						setView('2QD1', '1');
+					break;
+					case "threeten":
+						setView('1GPB', '1');
+					break;
+				}
+			}
+			if (divID == "distorted") {
+				distorted(0); // Jmol applet is empty if this is not called again
+			}
+		}
+	}
+  });
+}
+</script>
+
+</body>
+</html>

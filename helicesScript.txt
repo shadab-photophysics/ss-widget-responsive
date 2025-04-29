@@ -1,0 +1,9 @@
+zstart = {2.N}.atomZ;
+zend = {22.C}.atomZ;
+draw line1 ARROW width 0.25 color [171, 181, 146] {0, 0, @zstart} {0, 0, @zend};
+for (var i in {*.N or *.CA or *.C}) {
+	z = i.atomZ;
+	draw line2 ARROW length 3 width 0.25 color [113, 144, 112] {0, 0, @z} (i);
+	delay 0.1;
+}
+loop 0;

@@ -1,0 +1,4 @@
+set echo middle center;
+font echo 18 sanserif bold;
+color echo [158,36,123];
+echo Loading...;
