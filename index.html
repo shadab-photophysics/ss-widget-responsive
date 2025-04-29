@@ -1696,19 +1696,5 @@ for (i = 0; i < coll.length; i++) {
   });
 }
 </script>
-
-<script>
-// report our full content height up to the parent
-function reportHeight() {
-  var h = document.documentElement.scrollHeight;
-  window.parent.postMessage({ widgetHeight: h }, "*");
-}
-window.addEventListener("load", reportHeight);
-new ResizeObserver(reportHeight).observe(document.body);
-window.addEventListener("resize", reportHeight);
-</script>
-
-
-
 </body>
 </html>
