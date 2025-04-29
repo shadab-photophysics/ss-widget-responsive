@@ -1697,27 +1697,5 @@ for (i = 0; i < coll.length; i++) {
 }
 </script>
 
-diff --git a/index.html b/index.html
-index e1f23a4..abcdef0 100644
---- a/index.html
-+++ b/index.html
-@@ /* … your existing markup … */
--  </body>
-+  <!-- auto-height reporter: send our real height up to the parent iframe -->
-+  <script>
-+  ;(function(){
-+    function reportHeight() {
-+      var h = document.documentElement.scrollHeight;
-+      window.parent.postMessage({ widgetHeight: h }, "*");
-+    }
-+    window.addEventListener("load", reportHeight);
-+    window.addEventListener("resize", reportHeight);
-+    if (window.ResizeObserver) {
-+      new ResizeObserver(reportHeight).observe(document.body);
-+    }
-+  })();
-+  </script>
-+  </body>
-
 </body>
 </html>
