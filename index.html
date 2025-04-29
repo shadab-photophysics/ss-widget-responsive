@@ -1698,15 +1698,16 @@ for (i = 0; i < coll.length; i++) {
 </script>
 
 <script>
-// ← “I’m the widget, reporting my full content height to my host page”
+// report our full content height up to the parent
 function reportHeight() {
-  const h = document.documentElement.scrollHeight;
+  var h = document.documentElement.scrollHeight;
   window.parent.postMessage({ widgetHeight: h }, "*");
 }
 window.addEventListener("load", reportHeight);
 new ResizeObserver(reportHeight).observe(document.body);
 window.addEventListener("resize", reportHeight);
 </script>
+
 
 
 </body>
