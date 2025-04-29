@@ -377,3 +377,15 @@ body {
   position: absolute;
   background: #004f95;
 }
+
+/* — force playground panels to stay in one row — */
+#playground {
+  display: flex !important;
+  flex-wrap: nowrap !important;
+}
+
+/* — remove the old float so flex can take over — */
+.playgroundContent {
+  float: none !important;
+  display: inline-block !important;
+}
