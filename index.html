@@ -1697,23 +1697,5 @@ for (i = 0; i < coll.length; i++) {
 }
 </script>
 
-  <!-- the correct child script for MIT iframe-resizer -->
-  <script src="https://cdn.jsdelivr.net/npm/iframe-resizer@4.3.2/js/iframeResizer.contentWindow.min.js"></script>
-  <script>
-    // tell the parent every time our height changes
-    function sendHeight(){
-      parent.postMessage(
-        { height: document.documentElement.scrollHeight },
-        '*'
-      );
-    }
-    window.addEventListener('load',  sendHeight);
-    window.addEventListener('resize', sendHeight);
-    new MutationObserver(sendHeight).observe(document.body, {
-      childList: true,
-      subtree:   true
-    });
-  </script>
-
 </body>
 </html>
