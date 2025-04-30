@@ -1,41 +1,44 @@
-// embed.js (place in your repo root)
+// embed.js (root of ss-widget-responsive)
 (function () {
-  // 1) mount-point: script’s parent
+  // ───── 1) Mount-point: auto-create container ─────
   const placeholder = document.currentScript.parentNode;
   const container = document.createElement("div");
   container.id = "ss-structure-widget";
   placeholder.appendChild(container);
 
+  // ───── 2) Base URL for assets ─────
   const BASE = "https://secondary-structure.netlify.app/";
 
-  // 2) fetch page & markup
-  async function fetchBody() {
-    const res = await fetch(BASE);
-    if (!res.ok)
-      throw new Error("Failed to fetch widget HTML (" + res.status + ")");
-    const text = await res.text();
-    const doc = new DOMParser().parseFromString(text, "text/html");
-    container.innerHTML = doc.body.innerHTML;
-    return doc;
-  }
-
-  // 3) load + rewrite CSS
-  async function loadAndRewriteCSS(href) {
-    const res = await fetch(href);
-    if (!res.ok) throw new Error("Failed to load CSS " + href);
-    let css = await res.text();
-    css = css.replace(/url\(\s*['"]?([^'"\)]+)['"]?\s*\)/g, (m, url) => {
-      // skip absolute/data URLs
-      if (/^(data:|https?:\/\/)/.test(url)) return `url(${url})`;
-      const abs = new URL(url, href).href;
-      return `url(${abs})`;
+  // ───── 3) Monkey-patch Image so relative src → absolute BASE+src ─────
+  const NativeImage = window.Image;
+  window.Image = function (width, height) {
+    const img = new NativeImage(width, height);
+    Object.defineProperty(img, "src", {
+      set(v) {
+        let url = v;
+        // only rewrite relative URLs (no protocol)
+        if (!/^(?:[a-z]+:)?\/\//i.test(v)) {
+          url = new URL(v, BASE).href;
+        }
+        NativeImage.prototype.src.setter.call(this, url);
+      },
+      get() {
+        return NativeImage.prototype.src.getter.call(this);
+      },
+      configurable: true,
+      enumerable: true,
     });
-    const style = document.createElement("style");
-    style.textContent = css;
-    document.head.appendChild(style);
-  }
+    return img;
+  };
+  window.Image.prototype = NativeImage.prototype;
 
-  // 4) load JS in sequence
+  // ───── 4) Helpers to load CSS and JS ─────
+  function loadCSS(href) {
+    const l = document.createElement("link");
+    l.rel = "stylesheet";
+    l.href = href;
+    document.head.appendChild(l);
+  }
   function loadScript(src) {
     return new Promise((resolve, reject) => {
       const s = document.createElement("script");
@@ -47,35 +50,35 @@
     });
   }
 
-  // 5) main flow
+  // ───── 5) The main embedding flow ─────
   (async function () {
     try {
-      // A) fetch & inject body
-      const doc = await fetchBody();
+      // 5A) Fetch the Netlify page HTML
+      const res = await fetch(BASE);
+      if (!res.ok) throw new Error("Fetch failed: " + res.status);
+      const text = await res.text();
+      const doc = new DOMParser().parseFromString(text, "text/html");
 
-      // B) for each CSS <link>, load & rewrite it
-      for (let link of doc.querySelectorAll('link[rel="stylesheet"]')) {
-        const href = new URL(link.getAttribute("href"), BASE).href;
-        await loadAndRewriteCSS(href);
-      }
-      // also inline styles
-      doc.querySelectorAll("style").forEach((style) => {
-        document.head.appendChild(style.cloneNode(true));
-      });
+      // 5B) Inject its <body> markup
+      container.innerHTML = doc.body.innerHTML;
 
-      // C) load JS in the order you need
+      // 5C) Load your CSS (any url(...) inside will resolve at BASE)
+      loadCSS(BASE + "style.css");
+
+      // 5D) Sequentially load all JS (skipping the 404 one)
       await loadScript(BASE + "jsmol/jsmol/JSmol.min.js");
-      // skip InstrumentHooks.js (404)
       await loadScript(BASE + "controls.js");
       await loadScript(BASE + "subviews.js");
       await loadScript(BASE + "ramachandran.js");
       await loadScript(BASE + "moleculeLoaded.js");
       await loadScript(BASE + "builder.js");
 
-      // D) initialize playground
-      if (typeof mainTextControl === "function") mainTextControl();
+      // 5E) Finally kick off that missing initializer
+      if (typeof mainTextControl === "function") {
+        mainTextControl();
+      }
     } catch (err) {
-      console.error(err);
+      console.error("Embed error:", err);
       container.innerHTML =
         '<p style="color:red;">Embed error:<br>' + err.message + "</p>";
     }
