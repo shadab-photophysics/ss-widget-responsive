@@ -1,12 +1,16 @@
-// Embed entrypoint — save as `embed.js` in the project root
+// ─── embed.js (put in the root of your repo) ───
 (function () {
-  // 1) Where we’ll mount the widget
+  // 1) find the <script> tag that loaded this file, use its parent as mount-point
   const placeholder = document.currentScript.parentNode;
+
+  // 2) create a container DIV and attach it
   const container = document.createElement("div");
   container.id = "ss-structure-widget";
   placeholder.appendChild(container);
 
-  // 2) Helper to load CSS
+  const BASE = "https://secondary-structure.netlify.app/";
+
+  // helper: load a CSS file
   function loadCSS(href) {
     const l = document.createElement("link");
     l.rel = "stylesheet";
@@ -14,45 +18,51 @@
     document.head.appendChild(l);
   }
 
-  // 3) Helper to load JS in sequence
-  function loadScript(path) {
+  // helper: load a JS file in sequence
+  function loadScript(src) {
     return new Promise((resolve, reject) => {
       const s = document.createElement("script");
-      s.src = path;
-      s.async = false; // preserve order
+      s.src = src;
+      s.async = false; // preserve execution order
       s.onload = () => resolve();
-      s.onerror = () => reject(new Error("Failed to load " + path));
-      document.head.appendChild(s);
+      s.onerror = () => reject(new Error("Failed to load " + src));
+      document.body.appendChild(s);
     });
   }
 
-  // 4) Base URL of your Netlify site
-  const BASE = "https://secondary-structure.netlify.app/";
-
-  // 5) Load your CSS first
-  loadCSS(BASE + "style.css");
-
-  // 6) Then load the JSmol core + your widgets in the exact order they appear on your site:
+  // the main embedding flow
   (async function () {
     try {
+      // A) fetch your Netlify page
+      const res = await fetch(BASE);
+      if (!res.ok)
+        throw new Error("Failed to fetch widget HTML (" + res.status + ")");
+      const html = await res.text();
+
+      // B) parse the HTML, extract its <body>
+      const doc = new DOMParser().parseFromString(html, "text/html");
+      container.innerHTML = doc.body.innerHTML;
+
+      // C) inject the CSS
+      loadCSS(BASE + "style.css");
+
+      // D) load the scripts in the order they’re referenced on your site
+      //    (skipping InstrumentHooks.js since it 404s)
       await loadScript(BASE + "jsmol/jsmol/JSmol.min.js");
-      await loadScript(BASE + "InstrumentHooks.js");
       await loadScript(BASE + "controls.js");
       await loadScript(BASE + "subviews.js");
       await loadScript(BASE + "ramachandran.js");
       await loadScript(BASE + "moleculeLoaded.js");
       await loadScript(BASE + "builder.js");
 
-      // 7) Finally kick off the text-control playground
+      // E) finally kick off the playground
       if (typeof mainTextControl === "function") {
         mainTextControl();
       }
     } catch (err) {
       console.error(err);
       container.innerHTML =
-        '<p style="color:red;">Failed to load Secondary-Structure widget:<br>' +
-        err.message +
-        "</p>";
+        '<p style="color:red;">Embed error:<br>' + err.message + "</p>";
     }
   })();
 })();
