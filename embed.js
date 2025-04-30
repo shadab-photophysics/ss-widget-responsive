@@ -1,79 +1,71 @@
-// embed.js (root of ss-widget-responsive)
+// embed.js — put this at the root of ss-widget-responsive and redeploy
 (function () {
-  // ───── 1) Mount-point: auto-create container ─────
+  // ─── 1) mount-point (auto) ───
   const placeholder = document.currentScript.parentNode;
   const container = document.createElement("div");
   container.id = "ss-structure-widget";
   placeholder.appendChild(container);
 
-  // ───── 2) Base URL for assets ─────
+  // ─── 2) base URL ───
   const BASE = "https://secondary-structure.netlify.app/";
 
-  // ───── 3) Monkey-patch Image so relative src → absolute BASE+src ─────
-  const NativeImage = window.Image;
-  window.Image = function (width, height) {
-    const img = new NativeImage(width, height);
-    Object.defineProperty(img, "src", {
+  // ─── 3) patch all Image src assignments ───
+  const imgProto = HTMLImageElement.prototype;
+  const srcDesc = Object.getOwnPropertyDescriptor(imgProto, "src");
+  if (srcDesc && srcDesc.set) {
+    Object.defineProperty(imgProto, "src", {
+      get: srcDesc.get,
       set(v) {
-        let url = v;
-        // only rewrite relative URLs (no protocol)
-        if (!/^(?:[a-z]+:)?\/\//i.test(v)) {
-          url = new URL(v, BASE).href;
-        }
-        NativeImage.prototype.src.setter.call(this, url);
-      },
-      get() {
-        return NativeImage.prototype.src.getter.call(this);
+        // rewrite only relative URLs
+        const url =
+          v && !/^(?:[a-z]+:)?\/\//i.test(v) ? new URL(v, BASE).href : v;
+        srcDesc.set.call(this, url);
       },
       configurable: true,
       enumerable: true,
     });
-    return img;
-  };
-  window.Image.prototype = NativeImage.prototype;
-
-  // ───── 4) Helpers to load CSS and JS ─────
-  function loadCSS(href) {
-    const l = document.createElement("link");
-    l.rel = "stylesheet";
-    l.href = href;
-    document.head.appendChild(l);
   }
-  function loadScript(src) {
+
+  // ─── 4) load style.css so CSS url(...) resolves relative to BASE ───
+  const link = document.createElement("link");
+  link.rel = "stylesheet";
+  link.href = BASE + "style.css";
+  document.head.appendChild(link);
+
+  // ─── 5) helper to load scripts in sequence ───
+  function loadScript(path) {
     return new Promise((resolve, reject) => {
       const s = document.createElement("script");
-      s.src = src;
+      s.src = path;
       s.async = false; // preserve order
       s.onload = () => resolve();
-      s.onerror = () => reject(new Error("Failed to load " + src));
-      document.body.appendChild(s);
+      s.onerror = () => reject(new Error("Failed to load " + path));
+      document.head.appendChild(s);
     });
   }
 
-  // ───── 5) The main embedding flow ─────
+  // ─── 6) main flow: fetch HTML, inject body, then load JS ───
   (async function () {
     try {
-      // 5A) Fetch the Netlify page HTML
+      // 6A) fetch and parse index.html
       const res = await fetch(BASE);
       if (!res.ok) throw new Error("Fetch failed: " + res.status);
-      const text = await res.text();
-      const doc = new DOMParser().parseFromString(text, "text/html");
+      const html = await res.text();
+      const doc = new DOMParser().parseFromString(html, "text/html");
 
-      // 5B) Inject its <body> markup
+      // 6B) inject body markup
       container.innerHTML = doc.body.innerHTML;
 
-      // 5C) Load your CSS (any url(...) inside will resolve at BASE)
-      loadCSS(BASE + "style.css");
-
-      // 5D) Sequentially load all JS (skipping the 404 one)
+      // 6C) load your scripts in the exact order needed
       await loadScript(BASE + "jsmol/jsmol/JSmol.min.js");
+      // InstrumentHooks.js 404s, so we skip it
       await loadScript(BASE + "controls.js");
       await loadScript(BASE + "subviews.js");
       await loadScript(BASE + "ramachandran.js");
       await loadScript(BASE + "moleculeLoaded.js");
       await loadScript(BASE + "builder.js");
 
-      // 5E) Finally kick off that missing initializer
+      // 6D) finally initialize the text‐control playground
       if (typeof mainTextControl === "function") {
         mainTextControl();
       }
