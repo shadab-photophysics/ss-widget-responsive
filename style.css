@@ -377,14 +377,3 @@ body {
   position: absolute;
   background: #004f95;
 }
-
-/* ─── keep playground items on one line ─── */
-.playground-container {
-  display: flex !important;
-  flex-wrap: nowrap !important;
-  overflow-x: auto !important; /* horizontal scroll if too wide */
-}
-.playground-container > * {
-  flex: 0 0 auto !important; /* each child keeps its intrinsic size */
-  margin-right: 1rem; /* optional spacing between items */
-}
