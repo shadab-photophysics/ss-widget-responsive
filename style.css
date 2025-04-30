@@ -377,3 +377,14 @@ body {
   position: absolute;
   background: #004f95;
 }
+
+/* assuming your playground items all live under .playground-container */
+.playground-container {
+  display: flex;
+  flex-wrap: nowrap; /* NEVER wrap to next line */
+  overflow-x: auto; /* allow horizontal scroll if they exceed width */
+}
+.playground-container > * {
+  flex: 0 0 auto; /* each child keeps its intrinsic width */
+  margin-right: 1rem; /* spacing between items */
+}

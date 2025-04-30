@@ -1697,19 +1697,21 @@ for (i = 0; i < coll.length; i++) {
 }
 </script>
 
-   <!-- iframe-resizer child -->
-  <script src="https://cdn.jsdelivr.net/npm/iframe-resizer/js/iframeResizer.contentWindow.min.js"></script>
+  <!-- the correct child script for MIT iframe-resizer -->
+  <script src="https://cdn.jsdelivr.net/npm/iframe-resizer@4.3.2/js/iframeResizer.contentWindow.min.js"></script>
   <script>
-    console.log('[Child] iframeResizer.contentWindow loaded');
+    // tell the parent every time our height changes
     function sendHeight(){
-      var h = document.documentElement.scrollHeight;
-      console.log('[Child] sending height', h);
-      parent.postMessage({ height: h }, '*');
+      parent.postMessage(
+        { height: document.documentElement.scrollHeight },
+        '*'
+      );
     }
-    window.addEventListener('load', sendHeight);
+    window.addEventListener('load',  sendHeight);
     window.addEventListener('resize', sendHeight);
     new MutationObserver(sendHeight).observe(document.body, {
-      childList:true, subtree:true
+      childList: true,
+      subtree:   true
     });
   </script>
 
