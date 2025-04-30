@@ -1697,8 +1697,26 @@ for (i = 0; i < coll.length; i++) {
 }
 </script>
 
-  <!-- iframe-resizer contentWindow script: the ONLY child-side snippet you need -->
+  <!-- iframe-resizer child side -->
   <script src="https://cdn.jsdelivr.net/npm/iframe-resizer/js/iframeResizer.contentWindow.min.js"></script>
+  <script>
+  (function(){
+    function sendHeight(){
+      parent.postMessage(
+        { height: document.documentElement.scrollHeight },
+        '*'
+      );
+    }
+    // send once on load + resize
+    window.addEventListener('load', sendHeight);
+    window.addEventListener('resize', sendHeight);
+    // observe any DOM changes (e.g. content added dynamically)
+    new MutationObserver(sendHeight).observe(document.body, {
+      childList: true,
+      subtree: true
+    });
+  })();
+  </script>
 
 </body>
 </html>
