@@ -11,7 +11,7 @@
 html,
 body {
   font-family: "Gotham Rounded Book", -apple-system, BlinkMacSystemFont,
-    "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+    "Segoe UI", "Roboto", "Helvetica Neue", Arial, sans-serif;
   line-height: 1.5; /* breathe */
   letter-spacing: 0.02em; /* subtle tracking */
   margin: 0;
