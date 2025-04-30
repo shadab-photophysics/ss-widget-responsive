@@ -1383,24 +1383,3 @@ function setView(pdbID, viewID) {
 function helicesHover() {
   console.log(this);
 }
-
-// In secondary-structure.netlify.app
-window.addEventListener("message", function (e) {
-  if (!e.data || !e.data.requestHeight) return;
-  // send the document’s scrollHeight back to the host
-  e.source.postMessage(
-    {
-      frameHeight: document.documentElement.scrollHeight,
-    },
-    e.origin
-  );
-});
-// also, whenever your content changes size (e.g. on window.resize), re-post:
-window.addEventListener("resize", function () {
-  parent.postMessage(
-    {
-      frameHeight: document.documentElement.scrollHeight,
-    },
-    "*"
-  );
-});
