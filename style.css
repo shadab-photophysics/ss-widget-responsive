@@ -45,10 +45,19 @@ body {
   background-color: #e6e6e6;
 }
 
+#JmolDiv_intro {
+  width: 25vmin;
+  height: 15vmin;
+}
+
 #ramachandran_div {
   position: relative;
   width: 25vmin;
   height: 25vmin;
+}
+
+#collapsibles {
+  width: 25vmin;
 }
 
 #canvas,
