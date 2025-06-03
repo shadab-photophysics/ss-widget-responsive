@@ -48,6 +48,7 @@ body {
 #JmolDiv_intro {
   width: 25vmin;
   height: 20vmin;
+  margin-right: 5px;
 }
 
 #playgroundcontrols {
@@ -59,6 +60,7 @@ body {
   position: relative;
   width: 20vmin;
   height: 20vmin;
+  margin-right: 5px;
 }
 
 #collapsibles {
@@ -172,6 +174,7 @@ body {
 #secondarystructures {
   width: fit-content;
   min-width: fit-content;
+  font-size: 10px;
   background: #e6e6e6;
   display: grid;
   grid-template-areas:
