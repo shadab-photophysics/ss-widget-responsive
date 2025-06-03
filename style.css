@@ -50,6 +50,10 @@ body {
   height: 15vmin;
 }
 
+#playgroundcontrols {
+  width: 14vmin;
+}
+
 #ramachandran_div {
   position: relative;
   width: 25vmin;
