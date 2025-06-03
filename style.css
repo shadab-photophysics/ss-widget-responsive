@@ -62,7 +62,7 @@ body {
 }
 
 #collapsibles {
-  width: 35vmin;
+  width: 25vmin;
 }
 
 #canvas,
@@ -119,7 +119,7 @@ body {
 }
 
 .jmolContainer {
-  width: 50vmin;
+  width: 25vmin;
   height: 50vmin;
 }
 
