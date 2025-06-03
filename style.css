@@ -47,17 +47,18 @@ body {
 
 #JmolDiv_intro {
   width: 25vmin;
-  height: 15vmin;
+  height: 20vmin;
 }
 
 #playgroundcontrols {
-  width: 14vmin;
+  width: 30vmin;
+  font-size: 10px;
 }
 
 #ramachandran_div {
   position: relative;
-  width: 25vmin;
-  height: 25vmin;
+  width: 20vmin;
+  height: 20vmin;
 }
 
 #collapsibles {
@@ -118,8 +119,8 @@ body {
 }
 
 .jmolContainer {
-  width: 80vmin;
-  height: 80vmin;
+  width: 50vmin;
+  height: 50vmin;
 }
 
 .structureBox {
