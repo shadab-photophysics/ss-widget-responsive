@@ -51,7 +51,7 @@ body {
 }
 
 #playgroundcontrols {
-  width: 30vmin;
+  width: 20vmin;
   font-size: 10px;
 }
 
@@ -62,7 +62,7 @@ body {
 }
 
 #collapsibles {
-  width: 25vmin;
+  width: 35vmin;
 }
 
 #canvas,
