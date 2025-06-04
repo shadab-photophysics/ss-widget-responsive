@@ -1362,9 +1362,9 @@ These constraints are the reason why secondary structure can be classified into 
 <script type="text/javascript" src='ramachandran.js'></script>
 
 <script>
-// Handle reference links behavior
 
-  // Called when someone clicks: <a href="#reference-3" onclick="reference(this.href);">
+// Handle reference links behavior
+// Called when someone clicks reference: <a href="#reference-3" onclick="reference(this.href);">
   function reference(anchor) {
     var spanID = anchor.split("#")[1];
     var span = document.getElementById(spanID);
@@ -1375,12 +1375,12 @@ These constraints are the reason why secondary structure can be classified into 
     span.counter = 0;
     // Grab computed style so we know the element’s original text colour:
     span.defColor       = window.getComputedStyle(span).color;
-    // Highlight colour = RGB(128, 30, 101):
+    // Highlight colour APP brand colour = RGB(128, 30, 101):
     span.highlightColor = "rgb(128, 30, 101)";
-
+    //increase the number if you want the blink to be slower
     span.alertTimerId = setInterval(function() {
       blinkOnce(span.id);
-    }, 150);
+    }, 100);
   }
 
   function blinkOnce(spanID) {
@@ -1388,15 +1388,15 @@ These constraints are the reason why secondary structure can be classified into 
     span.counter++;
 
     // Toggle between original colour and highlight colour.
-    // If inline style.color is empty or matches defColor, switch to highlight.
+    // If inline style.color is empty or matches defColour, switch to highlight.
     if (span.style.color === span.defColor || span.style.color === "") {
       span.style.color = span.highlightColor;
     } else {
       span.style.color = span.defColor;
     }
 
-    // After ~10 toggles (≈1 second), stop and restore original colour:
-    if (span.counter > 10) {
+    // After ~20 toggles (≈2 second depending on the setinterval), stop and restore original colour: @martin increase the number if you want the blink to last longer
+    if (span.counter > 20) {
       blinkOff(span);
     }
   }

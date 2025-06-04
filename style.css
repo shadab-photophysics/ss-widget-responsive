@@ -1,4 +1,4 @@
-/* — load Gotham Rounded Book from OTF — */
+/*  load Gotham Rounded Book from OTF  */
 @font-face {
   font-family: "Gotham Rounded Book";
   src: url("fonts/GothamRounded-Book.otf") format("opentype");
@@ -7,7 +7,7 @@
   font-display: swap; /* keep text visible until font loads */
 }
 
-/* — apply Gotham Rounded site-wide — */
+/* apply Gotham Rounded site-wide  */
 html,
 body {
   font-family: "Gotham Rounded Book", -apple-system, BlinkMacSystemFont,
@@ -397,7 +397,12 @@ body {
   background: #004f95;
 }
 
-/* Any element whose id starts with “reference-” will smoothly transition its color */
-[id^="reference-"] {
-  transition: color 0.15s ease-in-out;
+ol li span {
+  /* make it clear it’s hoverable: */
+  cursor: pointer;
+}
+
+/* on hover, switch to APP brand colour RGB(128, 30, 101) */
+ol li span:hover {
+  color: rgb(128, 30, 101);
 }
