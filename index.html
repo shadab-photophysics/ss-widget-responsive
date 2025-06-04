@@ -1363,35 +1363,49 @@ These constraints are the reason why secondary structure can be classified into 
 
 <script>
 // Handle reference links behavior
-function reference(anchor) {
-	var spanID = anchor.split("#")[1];
-	var span = document.getElementById(spanID);
-	blinkOn(span);
-}
 
-function blinkOn(span) {
+  // Called when someone clicks: <a href="#reference-3" onclick="reference(this.href);">
+  function reference(anchor) {
+    var spanID = anchor.split("#")[1];
+    var span = document.getElementById(spanID);
+    blinkOn(span);
+  }
+
+  function blinkOn(span) {
     span.counter = 0;
-    span.defColor=span.style.color;
-    span.alertTimerId =setInterval("blinkOnce('"+span.id+"')", 100 );
-}
+    // Grab computed style so we know the element’s original text colour:
+    span.defColor       = window.getComputedStyle(span).color;
+    // Highlight colour = RGB(128, 30, 101):
+    span.highlightColor = "rgb(128, 30, 101)";
 
-function blinkOnce(spanID) {
-    var span=document.getElementById(spanID)
+    span.alertTimerId = setInterval(function() {
+      blinkOnce(span.id);
+    }, 150);
+  }
+
+  function blinkOnce(spanID) {
+    var span = document.getElementById(spanID);
     span.counter++;
-    if(span.style.opacity == "1"){
-        span.style.opacity = "0.5";}
-     else{
-        span.style.opacity = "1";
-     }
-    if(span.counter > 10){
-        blinkOff(span);
-    }   
-}
 
-function blinkOff(span) {
-   clearInterval(span.alertTimerId);    
-   span.style.opacity = "1";
-}
+    // Toggle between original colour and highlight colour.
+    // If inline style.color is empty or matches defColor, switch to highlight.
+    if (span.style.color === span.defColor || span.style.color === "") {
+      span.style.color = span.highlightColor;
+    } else {
+      span.style.color = span.defColor;
+    }
+
+    // After ~10 toggles (≈1 second), stop and restore original colour:
+    if (span.counter > 10) {
+      blinkOff(span);
+    }
+  }
+
+  function blinkOff(span) {
+    clearInterval(span.alertTimerId);
+    span.style.color = span.defColor;
+  }
+
 
 // Handle collapsibles behavior
 var coll = document.getElementsByClassName("collapsible");

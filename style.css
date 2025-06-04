@@ -396,3 +396,8 @@ body {
   position: absolute;
   background: #004f95;
 }
+
+/* Any element whose id starts with “reference-” will smoothly transition its color */
+[id^="reference-"] {
+  transition: color 0.15s ease-in-out;
+}
