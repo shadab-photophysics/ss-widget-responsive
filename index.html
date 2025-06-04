@@ -1,7 +1,6 @@
 <!DOCTYPE HTML>
 <html lang="en">
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Secondary Structure</title>
 
 <link rel="stylesheet" href="style.css">
@@ -1696,6 +1695,22 @@ for (i = 0; i < coll.length; i++) {
   });
 }
 </script>
+
+<!-- To make the parent page do the scrolling -->
+
+<script>
+	document.addEventListener('click', function(evt) {
+	  const link = evt.target.closest('a[href^="#"]');
+	  if (!link) return;
+	  const targetID = link.getAttribute('href').substring(1);
+	  const targetElem = document.getElementById(targetID);
+	  if (!targetElem) return;
+	  const offsetY = targetElem.getBoundingClientRect().top + window.pageYOffset;
+	  parent.postMessage({ type: 'scrollToReference', id: targetID, y: offsetY }, '*');
+	  // let the hash change so :target highlighting still works
+	});
+  </script>
+  
 
 </body>
 </html>
