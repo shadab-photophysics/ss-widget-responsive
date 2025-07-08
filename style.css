@@ -248,7 +248,7 @@ a {
 #relaxed:hover,
 #righttwist:hover,
 #coil:hover {
-  background-color: #b01f85;
+  background-color: #c82d9c;
   cursor: pointer;
 }
 
@@ -259,7 +259,7 @@ a {
 #gammaturns:hover,
 #epsilonturns:hover,
 #deltaturns:hover {
-  background-color: #0058a7;
+  background-color: #0069c7;
   cursor: pointer;
 }
 
