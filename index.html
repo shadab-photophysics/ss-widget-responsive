@@ -953,11 +953,11 @@ $(document).ready(function(){
 			
 			<p>Definition of the twist sense (<a href="#Weatherford" onclick="reference(this.href);">Weatherford et al. 1979</a>) can sometimes seem a bit confusing, so let's have a look at the example for a right-twisted β-sheet here.</p>
 
-			<p>Firstly, the <span style="color:#abb592;"><b>individual β-strands</b></span> are right-twisted, i.e., looking down along the polypeptide chain, a clockwise rotation around the axis parallel to the β-strand is apparent.</p>
+			<p id="righttwist_text1" data-active="false" class="hoverable">&#128432; Firstly, the <span style="color:#abb592;"><b>individual β-strands</b></span> are right-twisted, i.e., looking down along the polypeptide chain, a clockwise rotation around the axis parallel to the β-strand is apparent.</p>
 			
-			<p>Similarly, multiple β-strands make up a <span style="color:#719070;"><b>right-twisted β-sheet</b></span>, i.e., looking down along an axis with the same orientation as the β-strands, a clockwise rotation of the <span style="color:#f79424;"><b>hydrogen bonds</b></span> around this axis is apparent.</p>
+			<p id="righttwist_text2" data-active="false" class="hoverable">&#128432; Similarly, multiple β-strands make up a <span style="color:#719070;"><b>right-twisted β-sheet</b></span>, i.e., looking down along an axis with the same orientation as the β-strands, a clockwise rotation of the <span style="color:#f79424;"><b>hydrogen bonds</b></span> around this axis is apparent.</p>
 			
-			<p>Confusingly, right-twisted β-sheets are sometimes ascribed a left twist; this occurs if a different reference axis is chosen that is orthogonal to the orientation of the β-strands: when looking along the direction of the hydrogen bonds, a <span style="color:#95c03d;"><b>left-handed interchain twist</b></span>, i.e., across the β-strands, is apparent.</p>
+			<p id="righttwist_text3" data-active="false" class="hoverable">&#128432; Confusingly, right-twisted β-sheets are sometimes ascribed a left twist; this occurs if a different reference axis is chosen that is orthogonal to the orientation of the β-strands: when looking along the direction of the hydrogen bonds, a <span style="color:#95c03d;"><b>left-handed interchain twist</b></span>, i.e., across the β-strands, is apparent.</p>
 			
 			<p>On average, the dihedral angles in heavily twisted anti-parallel β-sheets are close to φ&nbsp;≈&nbsp;-96° and ψ&nbsp;≈&nbsp;+158° (<a href="#Nesloney" onclick="reference(this.href);">Nesloney et al. 1996</a>).</p>
 		</div>
@@ -1570,6 +1570,45 @@ for (i = 0; i < coll.length; i++) {
 			commands += 'delete $ parallel; delete $ antiparallel; color cartoon [158,36,123];';
 			commands += 'zoom 200;rotate x -30;translate y -12;rotate spin y 5;';
 			Jmol.script(jmol_strands, commands);
+		break;
+		case "righttwist_text1":
+			residues = getValueByKey(moleculeProps, "1BA7")["residues"];
+			chains = getValueByKey(moleculeProps, "1BA7")["chains"];
+			// Create axes illustrating twist sense
+			commands += 'delete $ line2;delete $ line3;delete $ arc2;delete $ arc3;'; // Hide other axes and axis arrows
+			// Start of strand
+			commands += 'xyzstart = {' + residues[0][0] + ':' + chains[1][0] + '.CA}.xyz;';
+			// End of strand
+			commands += 'xyzend = {' + residues[0][1] + ':' + chains[1][1] + '.CA}.xyz;';
+			commands += 'draw line1 ARROW width 0.25 color [171, 181, 146] @xyzstart @xyzend;';
+			commands += 'draw arc1 ARROW ARC SCALE 4.0 DIAMETER 0.1 color [171, 181, 146] @xyzstart @xyzend {0, 0, 0} {90 270 0.5};';
+			Jmol.script(jmol_righttwist, commands);
+		break;
+		case "righttwist_text2":
+			residues = getValueByKey(moleculeProps, "1BA7")["residues"];
+			chains = getValueByKey(moleculeProps, "1BA7")["chains"];
+			// Create axes illustrating twist sense
+			commands += 'delete $ line1;delete $ line3;delete $ arc1;delete $ arc3;'; // Hide other axes and axis arrows
+			// Start of sheet
+			commands += 'xyzstart = ({' + residues[0][0] + ':' + chains[0][0] + '.CA}.xyz + {' + residues[1][1] + ':' + chains[1][1] + '.CA}.xyz) / 2;';
+			// End of sheet
+			commands += 'xyzend = ({' + residues[1][0] + ':' + chains[1][0] + '.CA}.xyz + {' + residues[0][1] + ':' + chains[0][1] + '.CA}.xyz) / 2;';
+			commands += 'draw line2 ARROW width 0.25 color [113, 144, 112] @xyzstart @xyzend;';
+			commands += 'draw arc2 ARROW ARC SCALE 10.0 DIAMETER 0.1 color [113, 144, 112] @xyzstart @xyzend {0, 0, 0} {90 270 0.5};';
+			Jmol.script(jmol_righttwist, commands);
+		break;
+		case "righttwist_text3":
+			residues = getValueByKey(moleculeProps, "1BA7")["residues"];
+			chains = getValueByKey(moleculeProps, "1BA7")["chains"];
+			// Create axes illustrating twist sense
+			commands += 'delete $ line1;delete $ line2;delete $ arc1;delete $ arc2;'; // Hide other axes and axis arrows
+			// Start of sheet (orthogonal)
+			commands += 'xyzstart = ({' + residues[1][0] + ':' + chains[1][0] + '.CA}.xyz + {' + residues[1][1] + ':' + chains[1][1] + '.CA}.xyz) / 2;';
+			// End of sheet (orthogonal)
+			commands += 'xyzend = ({' + residues[0][0] + ':' + chains[0][0] + '.CA}.xyz + {' + residues[0][1] + ':' + chains[0][1] + '.CA}.xyz) / 2;';
+			commands += 'draw line3 ARROW width 0.25 color [149, 192, 61] @xyzstart @xyzend;';
+			commands += 'draw arc3 ARROW ARC SCALE 10.0 DIAMETER 0.1 color [149, 192, 61] @xyzend @xyzstart {0, 0, 0} {0 270 0.5};';
+			Jmol.script(jmol_righttwist, commands);
 		break;
 	    }
 	    this.dataset.active = true;
