@@ -19,6 +19,10 @@ body {
   font-size: 12px;
 }
 
+a {
+  color: #9e247b;
+}
+
 /* Style the button that is used to open and close the collapsible content */
 .collapsible {
   background-color: #851764;
