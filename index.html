@@ -1762,9 +1762,10 @@ for (i = 0; i < coll.length; i++) {
 
 	  // Distance from top of iframe’s document to the anchor
 	  const offsetY = targetElem.getBoundingClientRect().top + window.pageYOffset;
+	console.log("offsetY = " + offsetY);
 
 	  // Send the offset up to the parent page
-	  parent.parent.postMessage({
+	  parent.parent.parent.postMessage({
 		type: 'scrollToReference',
 		id: targetID,
 		y: offsetY
