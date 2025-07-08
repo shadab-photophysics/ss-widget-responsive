@@ -1763,10 +1763,28 @@ for (i = 0; i < coll.length; i++) {
 	console.log("target element found");
 	  // Distance from top of iframe’s document to the anchor
 	  const offsetY = targetElem.getBoundingClientRect().top + window.pageYOffset;
-	
+	console.log("offsetY = " + offsetY);
 
 	  // Send the offset up to the parent page
 	  parent.postMessage({
+		type: 'scrollToReference',
+		id: targetID,
+		y: offsetY
+	  }, '*');
+
+		 parent.parent.postMessage({
+		type: 'scrollToReference',
+		id: targetID,
+		y: offsetY
+	  }, '*');
+
+		 parent.parent.parent.postMessage({
+		type: 'scrollToReference',
+		id: targetID,
+		y: offsetY
+	  }, '*');
+
+		 parent.parent.parent.parent.postMessage({
 		type: 'scrollToReference',
 		id: targetID,
 		y: offsetY
