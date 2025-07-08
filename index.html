@@ -1764,7 +1764,7 @@ for (i = 0; i < coll.length; i++) {
 	  const offsetY = targetElem.getBoundingClientRect().top + window.pageYOffset;
 
 	  // Send the offset up to the parent page
-	  parent.postMessage({
+	  parent.parent.postMessage({
 		type: 'scrollToReference',
 		id: targetID,
 		y: offsetY
