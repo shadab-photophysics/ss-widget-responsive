@@ -1753,37 +1753,19 @@ for (i = 0; i < coll.length; i++) {
 
 <script>
 	document.addEventListener('click', function(evt) {
-		console.log("click listener called");
+
 	  const link = evt.target.closest('a[href^="#"]');
 	  if (!link) return;
-	console.log("link found");
+
 	  const targetID = link.getAttribute('href').substring(1);
 	  const targetElem = document.getElementById(targetID);
 	  if (!targetElem) return;
-	console.log("target element found");
+
 	  // Distance from top of iframe’s document to the anchor
 	  const offsetY = targetElem.getBoundingClientRect().top + window.pageYOffset;
 
 	  // Send the offset up to the parent page
 	  parent.postMessage({
-		type: 'scrollToReference',
-		id: targetID,
-		y: offsetY
-	  }, '*');
-
-	  parent.parent.postMessage({
-		type: 'scrollToReference',
-		id: targetID,
-		y: offsetY
-	  }, '*');
-
-	  parent.parent.parent.postMessage({
-		type: 'scrollToReference',
-		id: targetID,
-		y: offsetY
-	  }, '*');
-
-	  parent.parent.parent.parent.postMessage({
 		type: 'scrollToReference',
 		id: targetID,
 		y: offsetY
