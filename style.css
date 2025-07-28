@@ -93,6 +93,10 @@ a {
   overflow: hidden;
 }
 
+#sequence {
+  text-transform: uppercase;
+}
+
 .button {
   display: inline-block;
   margin: 4px 2px;
