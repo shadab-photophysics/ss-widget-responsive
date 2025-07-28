@@ -724,7 +724,7 @@ $(document).ready(function(){
 		<div id="secondarystructures_explainingText" class="explainingtext ">
 			<p>In brief, secondary structure refers to the local geometry of the polypeptide backbone and well-defined, often repetitive patterns of stabilising hydrogen bonds. Based on these criteria, different classes of secondary structure elements can be defined. To the left you can see an overview of most of these classes and subclasses described in the literature.</p>
 			
-			<p>There are many known subclasses, some of which (shown in <span style="color:#0058a7;"><b>blue</b></span>) are not even included in any of the tools availalbe for secondary structure decomposition analysis for far-UV CD data. This is one of the reasons why results obtained with this traditional data analysis approach should be considered estimates rather than accurate, definite answers.</p>
+			<p>There are many known subclasses, some of which (shown in <span style="color:#0058a7;"><b>blue</b></span>) are not even included in any of the tools available for secondary structure decomposition analysis for far-UV CD data. This is one of the reasons why results obtained with this traditional data analysis approach should be considered estimates rather than accurate, definite answers.</p>
 			
 			<p>In fact, not even secondary structure content based on 3d models obtained from techniques such as x-ray crystallography or nuclear magnetic resonance (NMR) spectroscopy is definite. Secondary structure assignments based on 3d structures are most often carried out using the DSSP algorithm developed by Kabsch and Sander in 1983. However, other valid algorithms for this purpose exist that make use of different criteria and won't yield the exact same assignments (<a href="#Martin" onclick="reference(this.href);">Martin et al. 2005</a>). Secondary structure assignments based on such algorithms are always employed for the compilation of reference far-UV CD data sets that secondary structure decomposition analysis relies upon. This poses another factor that ultimately affects the accuracy of this kind of analysis.</p>
 			 <!--- Write something about the color code / which sub structures can or cannot be identified based on CD data ---->
@@ -935,7 +935,7 @@ $(document).ready(function(){
 		<div id="relaxed_explainingText" class="explainingtext">
 			<p>A β-sheet often conists of strands that span the amino acid sequence sequentially and are separated only by short turns; this results in anti-parallel β-sheets, because the backbone changes direction as it folds onto itself.</p>
 			<p>Relaxed, anti-parallel β-sheets form a pattern of alternating <span style="color:#abb592;"><b>shorter</b></span> and <span style="color:#719070;"><b>longer</b></span> distances between consecutive hydrogen bonds. Moreover, the <span style="color:#f79424;"><b>hydrogen bonds</b></span> are both perpendicular to the strands and more or less parallel to each other. On average, the dihedral angles in untwisted anti-parallel β-sheets are close to φ&nbsp;≈&nbsp;-145° and ψ&nbsp;≈&nbsp;+140° (<a href="#Nesloney" onclick="reference(this.href);">Nesloney et al. 1996</a>).</p>
-			<p>Truely relaxed β-sheets are not that common because most β-sheets are at least slighty right-twisted.</p>
+			<p>Truly relaxed β-sheets are not that common because most β-sheets are at least slighty right-twisted.</p>
 		</div>
 	</div>
 
@@ -1184,25 +1184,25 @@ $(document).ready(function(){
 </ul>
 </p>
 
-<p>Secondly, secondary structure can be defined based on the more or less specific relative positions of backbone atoms. These can be described by means of torsion angles, or dihedral angles.</p>
+<p>Secondly, secondary structure can be defined based on the more or less specific relative positions of backbone atoms. These can be described by means of torsion angles, i.e., dihedral angles in a stereochemical context, where both terms are usually being used synonymously.</p>
 
-<h2>Dihedral Angles</h2>
+<h2>Torsion Angles</h2>
 
-<p>A dihedral angle is the angle between two planes on either side of a bond that each span across a set of three atoms, where both planes include the two atoms that form the bond as well as the atom before or after this pair of atoms. Upon rotating both ends on either side of a bond in a molecule against each other, the dihedral angle for that bond changes.</p>
+<p>A dihedral angle, in general, is the angle between two intersecting planes or half-planes, and a torsion angle, in particular, is the dihedral angle between two planes on either side of a chemical bond that each span across a set of three atoms, where both planes include the two atoms that form the bond as well as the atom before or after this pair of atoms. Upon rotating both ends on either side of a bond in a molecule against each other, the torsion angle for that bond changes.</p>
 
-<p>In proteins and peptides, three types of dihedral angles can be distinguished for:
+<p>In proteins and peptides, three types of torsion angles can be distinguished for:
 <ul>
 <li><b>The bond preceding a C<sub>α</sub> atom, φ (phi):</b> C<sup><i>i</i>&nbsp;-&nbsp;1</sup>—N<sup><i>i</i></sup>—C<sub>α</sub><sup><i>i</i></sup>—C<sup><i>i</i></sup></li>
 <li><b>The bond following a C<sub>α</sub> atom, ψ (psi):</b> N<sup><i>i</i></sup>—C<sub>α</sub><sup><i>i</i></sup>—C<sup><i>i</i></sup>—N<sup><i>i</i>&nbsp;+&nbsp;1</sup></li>
 <li><b>The peptide bond, ω (omega):</b> C<sub>α</sub><sup><i>i</i></sup>—C<sup><i>i</i></sup>—N<sup><i>i</i>&nbsp;+&nbsp;1</sup>—C<sub>α</sub><sup><i>i</i>&nbsp;+&nbsp;1</sup></li>
 </ul>
-where <i>i</i> depicts the number of a residue (and <i>i</i>&nbsp;+&nbsp;1 is the subsequent residue in the amino acid sequence), the two planes span the first three atoms and the last three atoms, respectively, and rotation around the bond in the middle affects the corresponding dihedral angle.
+where <i>i</i> depicts the number of a residue (and <i>i</i>&nbsp;+&nbsp;1 is the subsequent residue in the amino acid sequence), the two planes span the first three atoms and the last three atoms, respectively, and rotation around the bond in the middle affects the corresponding torsion angle.
 
 </p>
 
 <p>The peptide bonds in polypeptides have a partial double-bond character due to the delocalisation of the lone pair of electrons on the nitrogen atom. Therefore, peptide bonds almost exclusively assume a <i>trans</i> configuration, and the corresponding dihedral angle, ω, is virtually always close to 180°.</p>
 
-<p>As opposed to the torsion angle of the peptide bond, φ and ψ have more degrees of freedom. However, <a href="#Ramachandran" onclick="reference(this.href);">G. N. Ramachandran</a> showed in 1963 that not just any theoretically possible combination of φ and ψ is found in proteins but dihedral angles are subject to certain constraints (which were later refined, e.g., see <a href="#Lovell" onclick="reference(this.href);">Lovell et al. 2003</a>) and can be classified accordingly:
+<p>As opposed to the torsion angle of the peptide bond, φ and ψ have more degrees of freedom. However, <a href="#Ramachandran" onclick="reference(this.href);">G. N. Ramachandran</a> showed in 1963 that not just any theoretically possible combination of φ and ψ is found in proteins, but rather dihedral angles are subject to certain constraints (which were later refined, e.g., see <a href="#Lovell" onclick="reference(this.href);">Lovell et al. 2003</a>) and can be classified accordingly:
 <ul>
 <li><b>Allowed combinations</b> that won't result in steric clashes between atoms</li>
 <li><b>Favoured combinations</b> that allow for the formation of stabilising backbone hydrogen bonds</li>
