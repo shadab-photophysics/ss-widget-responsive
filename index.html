@@ -528,7 +528,12 @@ function messageReceived() {
 
 $(document).ready(function(){
 	// Hide loading image
-	$('div[class='loading']').hide();
+	//$('div[class='loading']').hide();
+	var divsToHide = document.getElementsByClassName("loading");
+    for (var i = 0; i < divsToHide.length; i++) {
+        divsToHide[i].style.visibility = "hidden";
+        //divsToHide[i].style.display = "none";
+    }
 	console.log("Loading image hidden.");
 	
 	// Restrict input to one letter codes for amino acids
