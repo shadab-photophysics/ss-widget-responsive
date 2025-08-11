@@ -528,7 +528,7 @@ function messageReceived() {
 
 $(document).ready(function(){
 	// Hide loading image
-	$('#loading').hide();
+	$('div[class='loading']').hide();
 	
 	// Restrict input to one letter codes for amino acids
 	const regex = new RegExp("^[acdefghiklmnpqrstvwy]*$");
