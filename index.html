@@ -525,17 +525,8 @@ function messageReceived() {
 		scriptBusy = false;
 	}
 }
-
-$(document).ready(function(){
-	// Hide loading image
-	//$('div[class='loading']').hide();
-	var divsToHide = document.getElementsByClassName("loading");
-    for (var i = 0; i < divsToHide.length; i++) {
-        divsToHide[i].style.visibility = "hidden";
-        //divsToHide[i].style.display = "none";
-    }
-	console.log("Loading image hidden.");
 	
+$(document).ready(function(){
 	// Restrict input to one letter codes for amino acids
 	const regex = new RegExp("^[acdefghiklmnpqrstvwy]*$");
 
@@ -1790,9 +1781,17 @@ for (i = 0; i < coll.length; i++) {
   </script>
   
 <script>
-  //$(window).load(function() {
-    //$('#loading').hide();
-  //});
+	$(window).load(function() {
+		// Hide loading image
+		//$('#loading').hide();
+		//$('div[class='loading']').hide();
+		var divsToHide = document.getElementsByClassName("loading");
+	    for (var i = 0; i < divsToHide.length; i++) {
+	        divsToHide[i].style.visibility = "hidden";
+	        //divsToHide[i].style.display = "none";
+	    }
+		console.log("Loading image hidden.");
+	});
 </script>
 	
 </body>
