@@ -53,9 +53,9 @@ a {
 /* Add styling for loading div that is shown while page elements are still loading */
 .loading {
   position: absolute;
-  display: block;
+  display: inline-block;
   width: inherent;
-  height: inherent;
+  height: 100%;
   top: 0;
   left: 0;
   text-align: center;
