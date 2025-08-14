@@ -80,6 +80,7 @@ a {
 }
 
 #playgroundcontrols {
+  position: relative;
   width: 20vmin;
   font-size: 10px;
 }
