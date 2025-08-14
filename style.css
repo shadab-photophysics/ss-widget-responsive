@@ -67,6 +67,7 @@ a {
 
 #loading-image {
   position: absolute;
+  vertical-align: middle;
   z-index: 100;
 }
 
