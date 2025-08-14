@@ -525,8 +525,11 @@ function messageReceived() {
 		scriptBusy = false;
 	}
 }
-	
+
 $(document).ready(function(){
+	// Hide loading image
+	$('#loading').hide();
+	
 	// Restrict input to one letter codes for amino acids
 	const regex = new RegExp("^[acdefghiklmnpqrstvwy]*$");
 
@@ -588,10 +591,11 @@ $(document).ready(function(){
 </head>
 <body>
 	
-<div class="mainBox">
+<div id="mainBox">
 	<div class="loading">
-	  	<img id="loading-image" src="jsmol/jsmol/j2s/img/cursor_wait.gif" alt="Loading..." />
+	  <img id="loading-image" src="jsmol/jsmol/j2s/img/cursor_wait.gif" alt="Loading..." />
 	</div>
+	
 	<div id="secondarystructures" class="structureBox clickeable">
 		<div id="sselements_title" class="structureBoxTitle" style="pointer-events:none;"><b>Secondary Structure Elements</b></div>
 			<div id="helices" class="structureBox clickeable" style="display:block;align-items:center;">
@@ -717,7 +721,6 @@ $(document).ready(function(){
 			<div id="coil" class="structureBox singleItem"">
 				<div id="randomcoil_title" class="structureBoxTitle">Random Coil</div>
 			</div>
-		</div>
 	</div>
 
 	<div id="secondarystructures_content" style="display:block;" class="sscontent">
@@ -1220,10 +1223,6 @@ These constraints are the reason why secondary structure can be classified into 
 
 <!-- <p>Note that, although peptide bonds virtually always have an angle ω of close to 180°, you are allowed to change it in this model.</p> -->
 
-<div class="mainBox">
-<div class="loading">
-	<img id="loading-image" src="jsmol/jsmol/j2s/img/cursor_wait.gif" alt="Loading..." />
-</div>
 <div id="playground" class="img-noscale">
 	<div id="JmolDiv_intro" class="playgroundContent img-noscale"></div>
 
@@ -1335,7 +1334,6 @@ These constraints are the reason why secondary structure can be classified into 
 			</ul>
 		</div>
 	</div>
-</div>
 </div>
 
 <h1>References</h1>
@@ -1786,15 +1784,9 @@ for (i = 0; i < coll.length; i++) {
   </script>
   
 <script>
-	$(window).on("load", function() {
-		// Hide loading image(s)
-		var divsToHide = document.getElementsByClassName("loading");
-	    for (var i = 0; i < divsToHide.length; i++) {
-	        divsToHide[i].style.visibility = "hidden";
-	        //divsToHide[i].style.display = "none";
-	    }
-		console.log("Loading image hidden...");
-	});
+  //$(window).load(function() {
+    //$('#loading').hide();
+  //});
 </script>
 	
 </body>
