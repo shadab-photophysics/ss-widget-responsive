@@ -1782,9 +1782,7 @@ for (i = 0; i < coll.length; i++) {
   
 <script>
 	$(window).on("load", function() {
-		// Hide loading image
-		//$('#loading').hide();
-		//$('div[class='loading']').hide();
+		// Hide loading image(s)
 		var divsToHide = document.getElementsByClassName("loading");
 	    for (var i = 0; i < divsToHide.length; i++) {
 	        divsToHide[i].style.visibility = "hidden";
