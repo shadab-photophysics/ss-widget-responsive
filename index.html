@@ -588,7 +588,7 @@ $(document).ready(function(){
 </head>
 <body>
 	
-<div id="mainBox">
+<div class="mainBox">
 	<div class="loading">
 	  	<img id="loading-image" src="jsmol/jsmol/j2s/img/cursor_wait.gif" alt="Loading..." />
 	</div>
@@ -1220,7 +1220,7 @@ These constraints are the reason why secondary structure can be classified into 
 
 <!-- <p>Note that, although peptide bonds virtually always have an angle ω of close to 180°, you are allowed to change it in this model.</p> -->
 
-<div id="mainBox2">
+<div class="mainBox">
 <div class="loading">
 	<img id="loading-image" src="jsmol/jsmol/j2s/img/cursor_wait.gif" alt="Loading..." />
 </div>
@@ -1788,11 +1788,11 @@ for (i = 0; i < coll.length; i++) {
 <script>
 	$(window).on("load", function() {
 		// Hide loading image(s)
-		//var divsToHide = document.getElementsByClassName("loading");
-	    //for (var i = 0; i < divsToHide.length; i++) {
-	    //    divsToHide[i].style.visibility = "hidden";
-	    //    //divsToHide[i].style.display = "none";
-	    //}
+		var divsToHide = document.getElementsByClassName("loading");
+	    for (var i = 0; i < divsToHide.length; i++) {
+	        divsToHide[i].style.visibility = "hidden";
+	        //divsToHide[i].style.display = "none";
+	    }
 		console.log("Loading image hidden...");
 	});
 </script>
