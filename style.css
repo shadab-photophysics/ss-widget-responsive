@@ -200,7 +200,6 @@ a {
 #mainBox {
   display: flex;
   position: relative;
-  background: green;
 }
 
 #secondarystructures {
