@@ -201,7 +201,7 @@ a {
   padding-left: 10px;
 }
 
-#mainBox, #mainBox2 {
+.mainBox {
   display: flex;
   position: relative;
 }
