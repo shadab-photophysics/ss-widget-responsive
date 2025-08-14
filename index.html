@@ -1781,17 +1781,16 @@ for (i = 0; i < coll.length; i++) {
   </script>
   
 <script>
-	//$(window).load(function() {
 	$(window).on("load", function() {
 		// Hide loading image
 		//$('#loading').hide();
 		//$('div[class='loading']').hide();
-		//var divsToHide = document.getElementsByClassName("loading");
-	    //for (var i = 0; i < divsToHide.length; i++) {
-	    //    divsToHide[i].style.visibility = "hidden";
+		var divsToHide = document.getElementsByClassName("loading");
+	    for (var i = 0; i < divsToHide.length; i++) {
+	        divsToHide[i].style.visibility = "hidden";
 	        //divsToHide[i].style.display = "none";
-	    //}
-		console.log("Loading image hidden.");
+	    }
+		console.log("Loading image hidden");
 	});
 </script>
 	
