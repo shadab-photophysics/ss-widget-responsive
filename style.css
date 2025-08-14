@@ -53,8 +53,7 @@ a {
 /* Add styling for loading div that is shown while page elements are still loading */
 .loading {
   position: absolute;
-  display: table-cell;
-  width: inherent;
+  width: 100%;
   height: 100%;
   top: 0;
   left: 0;
@@ -157,7 +156,6 @@ a {
 }
 
 .structureBox {
-  display: table;
   overflow: auto;
   border-style: solid;
   border-color: white;
